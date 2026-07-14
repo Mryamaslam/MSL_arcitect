@@ -4,69 +4,120 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>MSL Interior — Preview</title>
-	<meta name="description" content="Static GitHub Pages preview of the MSL Interior portfolio theme." />
+	<meta name="description" content="MSL Interiors & Architects — modern, smart, luxury spaces. Complete static preview." />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link rel="preload" as="image" href="assets/img/hero-1.jpg" fetchpriority="high" />
 	<link rel="stylesheet" href="assets/portfolio.css" />
 	<style>
-		/* Preview chrome (no Blocksy header) */
 		body { margin: 0; background: #f6f3ee; }
 		.preview-bar {
-			position: sticky; top: 0; z-index: 50;
+			position: sticky; top: 0; z-index: 60;
 			display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; justify-content: space-between;
-			padding: 0.75rem 1.25rem;
-			background: #16181c; color: #fff;
-			font-family: Manrope, Segoe UI, sans-serif; font-size: 0.85rem;
+			padding: 0.55rem 1.25rem; background: #16181c; color: #fff;
+			font-family: Manrope, Segoe UI, sans-serif; font-size: 0.8rem;
 		}
 		.preview-bar a { color: #d4b788; }
 		.preview-nav {
-			position: sticky; top: 42px; z-index: 40;
+			position: sticky; top: 36px; z-index: 50;
 			display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-			padding: 0.9rem clamp(1rem, 3vw, 2rem);
-			background: rgba(22, 24, 28, 0.55); backdrop-filter: blur(8px);
-			color: #fff;
+			padding: 0.85rem clamp(1rem, 3vw, 2rem);
+			background: rgba(22,24,28,.45); backdrop-filter: blur(10px); color: #fff;
+			transition: background .25s ease, box-shadow .25s ease;
 		}
-		.preview-nav strong { letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.95rem; }
-		.preview-nav nav { display: flex; flex-wrap: wrap; gap: 1rem; }
-		.preview-nav a { color: #fff; text-decoration: none; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 650; }
+		body.arch-nav-solid .preview-nav {
+			background: rgba(255,252,248,.96); color: #16181c;
+			box-shadow: 0 1px 0 rgba(22,24,28,.08);
+		}
+		body.arch-nav-solid .preview-nav a { color: #16181c; }
+		.preview-nav .brand {
+			display: flex; align-items: center; gap: .65rem;
+			font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: .92rem;
+			text-decoration: none; color: inherit;
+		}
+		.preview-nav .mark {
+			display: inline-flex; align-items: center; justify-content: center;
+			min-width: 2.2rem; height: 2.2rem; padding: 0 .3rem; border-radius: 7px;
+			background: linear-gradient(145deg,#d4b788,#8a6a3d); color: #16181c;
+			font-size: .65rem; font-weight: 800; letter-spacing: .06em;
+		}
+		.preview-nav nav { display: flex; flex-wrap: wrap; gap: .85rem 1.1rem; }
+		.preview-nav nav a {
+			color: #fff; text-decoration: none; font-size: .76rem;
+			letter-spacing: .08em; text-transform: uppercase; font-weight: 650;
+		}
 		.preview-nav .cta {
-			background: #2563eb; color: #fff; padding: 0.55rem 1rem; border-radius: 8px; text-decoration: none; font-weight: 650;
+			background: #2563eb; color: #fff !important; padding: .5rem .95rem;
+			border-radius: 8px; text-decoration: none; font-weight: 650; font-size: .8rem; white-space: nowrap;
 		}
-		.arch-hero { min-height: 78vh; }
+		.arch-hero { min-height: 78vh; position: relative; }
+		.arch-hero__carousel { position: absolute; inset: 0; overflow: hidden; }
 		.arch-hero__slide {
 			position: absolute; inset: 0;
 			background-size: cover; background-position: center;
-			opacity: 0; transition: opacity 0.8s ease;
+			opacity: 0; transition: opacity .8s ease;
 		}
 		.arch-hero__slide.is-active { opacity: 1; }
-		.note {
-			margin: 0; padding: 0.85rem 1.25rem; background: #ece8e1; color: #5c616a;
-			font-family: Manrope, Segoe UI, sans-serif; font-size: 0.9rem; text-align: center;
+		.arch-hero__shade {
+			position: absolute; inset: 0;
+			background: linear-gradient(180deg, rgba(15,17,20,.45) 0%, rgba(15,17,20,.55) 55%, rgba(15,17,20,.72) 100%);
+		}
+		.arch-about-media {
+			border-radius: 12px; overflow: hidden; aspect-ratio: 4/3;
+			background: #ece8e1;
+		}
+		.arch-about-media img {
+			width: 100%; height: 100%; object-fit: cover; display: block;
+		}
+		.arch-project__media img {
+			width: 100%; height: 100%; object-fit: cover; display: block;
+		}
+		.arch-contact__form-card {
+			background: #fffcf8; border: 1px solid rgba(22,24,28,.12);
+			border-radius: 12px; padding: 1.35rem;
+		}
+		.arch-contact__form-card label {
+			display: block; font-size: .82rem; font-weight: 650; margin: .65rem 0 .25rem;
+		}
+		.arch-contact__form-card input,
+		.arch-contact__form-card select,
+		.arch-contact__form-card textarea {
+			width: 100%; box-sizing: border-box; padding: .7rem .8rem;
+			border: 1px solid rgba(22,24,28,.16); border-radius: 8px;
+			font: inherit; background: #fff;
+		}
+		.arch-contact__form-card textarea { min-height: 110px; resize: vertical; }
+		@media (max-width: 860px) {
+			.preview-nav nav { display: none; }
 		}
 	</style>
 </head>
 <body class="arch-portfolio-page arch-nav-over-hero">
 	<div class="preview-bar">
-		<span>MSL Interior — GitHub Pages preview (static demo)</span>
-		<span><a href="https://github.com/Mryamaslam/MSL_arcitect">Source on GitHub</a> · Full site runs on WordPress/XAMPP</span>
+		<span>MSL Interior — complete GitHub preview</span>
+		<span><a href="https://github.com/Mryamaslam/MSL_arcitect">GitHub</a></span>
 	</div>
 
-	<header class="preview-nav">
-		<strong>MSL Interior</strong>
+	<header class="preview-nav" id="site-nav">
+		<a class="brand" href="#"><span class="mark">MSL</span> MSL Interior</a>
 		<nav>
 			<a href="#about">About</a>
 			<a href="#services">Services</a>
 			<a href="#projects">Projects</a>
+			<a href="#process">Process</a>
 			<a href="#reviews">Reviews</a>
+			<a href="#faq">FAQ</a>
 			<a href="#contact">Contact</a>
 		</nav>
 		<a class="cta" href="#contact">Contact Us</a>
 	</header>
 
 	<main class="arch-site" id="primary">
-		<section class="arch-hero" data-arch-hero>
+		<section class="arch-hero" data-arch-hero id="top">
 			<div class="arch-hero__carousel" aria-hidden="true">
-				<div class="arch-hero__slide is-active" style="background-image:url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1600&q=80');"></div>
-				<div class="arch-hero__slide" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80');"></div>
-				<div class="arch-hero__slide" style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a79c61834?auto=format&fit=crop&w=1600&q=80');"></div>
+				<div class="arch-hero__slide is-active" style="background-image:url('assets/img/hero-1.jpg')"></div>
+				<div class="arch-hero__slide" style="background-image:url('assets/img/hero-2.jpg')"></div>
+				<div class="arch-hero__slide" style="background-image:url('assets/img/hero-3.jpg')"></div>
 				<div class="arch-hero__shade"></div>
 			</div>
 			<div class="arch-wrap arch-hero__content">
@@ -78,26 +129,43 @@
 					<a class="arch-btn arch-btn--outline-light" href="#contact">Free Consultation</a>
 				</div>
 			</div>
+			<div class="arch-hero__controls">
+				<button type="button" class="arch-hero__nav" data-arch-hero-prev aria-label="Previous slide">‹</button>
+				<div class="arch-hero__dots">
+					<button type="button" class="arch-hero__dot is-active" data-arch-hero-dot="0" aria-label="Slide 1"></button>
+					<button type="button" class="arch-hero__dot" data-arch-hero-dot="1" aria-label="Slide 2"></button>
+					<button type="button" class="arch-hero__dot" data-arch-hero-dot="2" aria-label="Slide 3"></button>
+				</div>
+				<button type="button" class="arch-hero__nav" data-arch-hero-next aria-label="Next slide">›</button>
+			</div>
 		</section>
 
-		<div class="arch-band arch-band--ink" aria-label="Practice highlights">
+		<section class="arch-band arch-band--ink" aria-label="Practice highlights">
 			<div class="arch-wrap arch-stats">
 				<div class="arch-stat"><strong>10</strong><span>Core services</span></div>
 				<div class="arch-stat"><strong>2D/3D</strong><span>Drawings & animations</span></div>
-				<div class="arch-stat"><strong>100%</strong><span>Site focused delivery</span></div>
+				<div class="arch-stat"><strong>100%</strong><span>Site-focused delivery</span></div>
 				<div class="arch-stat"><strong>Free</strong><span>Consultation available</span></div>
 			</div>
-		</div>
+		</section>
 
 		<section class="arch-section arch-section--paper" id="about">
 			<div class="arch-wrap arch-split">
-				<div>
+				<div class="arch-split__intro">
 					<p class="arch-kicker">About MSL</p>
 					<h2 class="arch-h2">Your dream space — our expertise.</h2>
+					<div class="arch-about-media" style="margin-top:1.25rem">
+						<img src="assets/img/about.jpg" alt="MSL interior space" width="800" height="600" loading="lazy" decoding="async" />
+					</div>
 				</div>
-				<div>
+				<div class="arch-split__body">
 					<p class="arch-lead">MSL Interiors & Architects designs modern, smart, and luxury spaces — from drawings and elevations to interiors, construction support, and custom furniture.</p>
-					<p>Based in Elite City, Kasur, we guide clients from visualization to site supervision so the finished project matches the design intent.</p>
+					<p class="arch-text">Based in Elite City, Kasur, we guide clients from visualization to site supervision so the finished project matches the design intent.</p>
+					<ul class="arch-checklist">
+						<li>Interior & exterior designing with 2D/3D visuals</li>
+						<li>Construction, renovation & site supervision</li>
+						<li>Cost estimation, furniture & property consultancy</li>
+					</ul>
 					<a class="arch-link" href="#services">Explore services →</a>
 				</div>
 			</div>
@@ -113,35 +181,67 @@
 					<p class="arch-section__aside">From drawings and elevations to interiors, furniture, consultancy, web development, and SEO — ten services under one team.</p>
 				</header>
 				<div class="arch-services">
-					<article class="arch-service"><span class="arch-service__num">01</span><h3 class="arch-service__title">2D & 3D Drawings</h3><p class="arch-service__text">Accurate 2D plans and immersive 3D drawings so you can see every detail before work begins.</p></article>
-					<article class="arch-service"><span class="arch-service__num">02</span><h3 class="arch-service__title">3D Elevations & Animations</h3><p class="arch-service__text">Photoreal elevations and walkthrough animations that bring your facade and interiors to life.</p></article>
-					<article class="arch-service"><span class="arch-service__num">03</span><h3 class="arch-service__title">Interior & Exterior Designing</h3><p class="arch-service__text">Complete interior and exterior design — modern, smart, and luxury spaces tailored to your lifestyle.</p></article>
-					<article class="arch-service"><span class="arch-service__num">04</span><h3 class="arch-service__title">Site Visits & Supervision</h3><p class="arch-service__text">On-site visits and site supervision so execution matches the approved design and quality.</p></article>
-					<article class="arch-service"><span class="arch-service__num">05</span><h3 class="arch-service__title">Construction & Renovation</h3><p class="arch-service__text">New builds and renovations managed with clear coordination from concept to handover.</p></article>
-					<article class="arch-service"><span class="arch-service__num">06</span><h3 class="arch-service__title">Cost & Material Estimation</h3><p class="arch-service__text">Transparent cost and material estimates so you plan budget, finishes, and scope with confidence.</p></article>
-					<article class="arch-service"><span class="arch-service__num">07</span><h3 class="arch-service__title">Customized Furniture</h3><p class="arch-service__text">Bespoke furniture designed for your space — fitted, functional, and on-brand with the interiors.</p></article>
-					<article class="arch-service"><span class="arch-service__num">08</span><h3 class="arch-service__title">Property Dealing & Consultancy</h3><p class="arch-service__text">Property dealing support and consultancy for smarter decisions on plots, homes, and investments.</p></article>
-					<article class="arch-service"><span class="arch-service__num">09</span><h3 class="arch-service__title">Web Development</h3><p class="arch-service__text">Custom websites for your business — fast, mobile-friendly, and designed to showcase your brand online.</p></article>
-					<article class="arch-service"><span class="arch-service__num">10</span><h3 class="arch-service__title">SEO</h3><p class="arch-service__text">Search engine optimization so clients can find you on Google — local reach, keywords, and better rankings.</p></article>
+					<article class="arch-service"><span class="arch-service__num">01</span><h3 class="arch-service__title">2D & 3D Drawings</h3><p class="arch-service__text">Accurate 2D plans and immersive 3D drawings so you can see every detail before work begins.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
+					<article class="arch-service"><span class="arch-service__num">02</span><h3 class="arch-service__title">3D Elevations & Animations</h3><p class="arch-service__text">Photoreal elevations and walkthrough animations that bring your facade and interiors to life.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
+					<article class="arch-service"><span class="arch-service__num">03</span><h3 class="arch-service__title">Interior & Exterior Designing</h3><p class="arch-service__text">Complete interior and exterior design — modern, smart, and luxury spaces tailored to your lifestyle.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
+					<article class="arch-service"><span class="arch-service__num">04</span><h3 class="arch-service__title">Site Visits & Supervision</h3><p class="arch-service__text">On-site visits and site supervision so execution matches the approved design and quality.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
+					<article class="arch-service"><span class="arch-service__num">05</span><h3 class="arch-service__title">Construction & Renovation</h3><p class="arch-service__text">New builds and renovations managed with clear coordination from concept to handover.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
+					<article class="arch-service"><span class="arch-service__num">06</span><h3 class="arch-service__title">Cost & Material Estimation</h3><p class="arch-service__text">Transparent cost and material estimates so you plan budget, finishes, and scope with confidence.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
+					<article class="arch-service"><span class="arch-service__num">07</span><h3 class="arch-service__title">Customized Furniture</h3><p class="arch-service__text">Bespoke furniture designed for your space — fitted, functional, and on-brand with the interiors.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
+					<article class="arch-service"><span class="arch-service__num">08</span><h3 class="arch-service__title">Property Dealing & Consultancy</h3><p class="arch-service__text">Property dealing support and consultancy for smarter decisions on plots, homes, and investments.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
+					<article class="arch-service"><span class="arch-service__num">09</span><h3 class="arch-service__title">Web Development</h3><p class="arch-service__text">Custom websites for your business — fast, mobile-friendly, and designed to showcase your brand online.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
+					<article class="arch-service"><span class="arch-service__num">10</span><h3 class="arch-service__title">SEO</h3><p class="arch-service__text">Search engine optimization so clients can find you on Google — local reach, keywords, and better rankings.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
 				</div>
 			</div>
 		</section>
 
-		<section class="arch-section arch-section--paper" id="projects">
+		<section class="arch-section arch-section--ink" id="process">
+			<div class="arch-wrap">
+				<header class="arch-section__head arch-section__head--on-dark">
+					<div>
+						<p class="arch-kicker arch-kicker--on-dark">How we work</p>
+						<h2 class="arch-h2 arch-h2--on-dark">A clear process from brief to site</h2>
+					</div>
+				</header>
+				<ol class="arch-steps">
+					<li class="arch-step"><span class="arch-step__index">01</span><h3 class="arch-step__title">Listen & Survey</h3><p class="arch-step__text">We understand your needs, site, and budget — then map a clear design direction.</p></li>
+					<li class="arch-step"><span class="arch-step__index">02</span><h3 class="arch-step__title">Design & Visualize</h3><p class="arch-step__text">2D/3D drawings, elevations, and interiors developed so you can review before build.</p></li>
+					<li class="arch-step"><span class="arch-step__index">03</span><h3 class="arch-step__title">Estimate & Plan</h3><p class="arch-step__text">Cost and material estimates prepared with practical options for finishes and furniture.</p></li>
+					<li class="arch-step"><span class="arch-step__index">04</span><h3 class="arch-step__title">Supervise & Deliver</h3><p class="arch-step__text">Site visits, supervision, and renovation support until your dream space is ready.</p></li>
+				</ol>
+			</div>
+		</section>
+
+		<section class="arch-section arch-section--paper arch-section--projects" id="projects">
 			<div class="arch-wrap">
 				<header class="arch-section__head">
 					<div>
 						<p class="arch-kicker">Portfolio</p>
 						<h2 class="arch-h2">Selected projects</h2>
 					</div>
-					<p class="arch-section__aside">Project images on the live WordPress site come from your local media library — this GitHub preview shows sample layout cards.</p>
+					<p class="arch-section__aside">Filter by room — Bedroom, Kitchen, Washroom, Living, Lawn, and more.</p>
 				</header>
-				<div class="arch-projects">
-					<article class="arch-project"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=70" alt="" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Bedroom</span><span class="arch-project__title">Bedroom Interiors</span><span class="arch-project__cta">View project →</span></span></a></article>
-					<article class="arch-project"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=70" alt="" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Kitchen</span><span class="arch-project__title">Kitchen Design</span><span class="arch-project__cta">View project →</span></span></a></article>
-					<article class="arch-project"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=70" alt="" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Exterior</span><span class="arch-project__title">Exterior Facades</span><span class="arch-project__cta">View project →</span></span></a></article>
-					<article class="arch-project"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=70" alt="" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Living</span><span class="arch-project__title">Living & TV Lounge</span><span class="arch-project__cta">View project →</span></span></a></article>
+				<div class="arch-filters" data-arch-filters role="tablist" aria-label="Filter projects">
+					<button type="button" class="arch-chip is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+					<button type="button" class="arch-chip" data-filter="bedroom" role="tab">Bedroom</button>
+					<button type="button" class="arch-chip" data-filter="kitchen" role="tab">Kitchen</button>
+					<button type="button" class="arch-chip" data-filter="washroom" role="tab">Washroom</button>
+					<button type="button" class="arch-chip" data-filter="living" role="tab">Living</button>
+					<button type="button" class="arch-chip" data-filter="lawn" role="tab">Lawn</button>
+					<button type="button" class="arch-chip" data-filter="exterior" role="tab">Exterior</button>
+					<button type="button" class="arch-chip" data-filter="elevations" role="tab">Elevations</button>
 				</div>
+				<div class="arch-projects" data-arch-projects>
+					<article class="arch-project" data-categories="bedroom"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="assets/img/proj-bedroom.jpg" alt="" width="640" height="480" loading="lazy" decoding="async" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Bedroom</span><span class="arch-project__title">Bedroom Interiors</span><span class="arch-project__cta">View project →</span></span></a></article>
+					<article class="arch-project" data-categories="kitchen"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="assets/img/proj-kitchen.jpg" alt="" width="640" height="480" loading="lazy" decoding="async" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Kitchen</span><span class="arch-project__title">Kitchen Design</span><span class="arch-project__cta">View project →</span></span></a></article>
+					<article class="arch-project" data-categories="washroom"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="assets/img/proj-washroom.jpg" alt="" width="640" height="480" loading="lazy" decoding="async" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Washroom</span><span class="arch-project__title">Washroom & Bath</span><span class="arch-project__cta">View project →</span></span></a></article>
+					<article class="arch-project" data-categories="living"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="assets/img/proj-living.jpg" alt="" width="640" height="480" loading="lazy" decoding="async" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Living</span><span class="arch-project__title">Living & TV Lounge</span><span class="arch-project__cta">View project →</span></span></a></article>
+					<article class="arch-project" data-categories="lawn"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="assets/img/proj-lawn.jpg" alt="" width="640" height="480" loading="lazy" decoding="async" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Lawn</span><span class="arch-project__title">Lawn & Outdoor</span><span class="arch-project__cta">View project →</span></span></a></article>
+					<article class="arch-project" data-categories="exterior elevations"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="assets/img/proj-exterior.jpg" alt="" width="640" height="480" loading="lazy" decoding="async" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Exterior</span><span class="arch-project__title">Exterior Facades</span><span class="arch-project__cta">View project →</span></span></a></article>
+					<article class="arch-project" data-categories="elevations"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="assets/img/proj-elevation.jpg" alt="" width="640" height="480" loading="lazy" decoding="async" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Elevations</span><span class="arch-project__title">Front Elevations</span><span class="arch-project__cta">View project →</span></span></a></article>
+					<article class="arch-project" data-categories="model exterior"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="assets/img/proj-model.jpg" alt="" width="640" height="480" loading="lazy" decoding="async" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Model</span><span class="arch-project__title">Scale Models</span><span class="arch-project__cta">View project →</span></span></a></article>
+				</div>
+				<p class="arch-empty-note" data-arch-filter-empty hidden>No projects in this category yet.</p>
 			</div>
 		</section>
 
@@ -161,17 +261,53 @@
 							<figure class="arch-review"><blockquote class="arch-review__quote"><p>“Their 3D elevations helped our family decide quickly. Site supervision kept quality consistent throughout.”</p></blockquote><figcaption class="arch-review__who"><strong>Omar Riaz</strong><span>Homeowner · Elite City</span></figcaption></figure>
 							<figure class="arch-review"><blockquote class="arch-review__quote"><p>“Modern, smart, luxury — they delivered exactly that. Furniture and finishes were carefully matched to the design.”</p></blockquote><figcaption class="arch-review__who"><strong>Nadia Ahmed</strong><span>Residential Client</span></figcaption></figure>
 							<figure class="arch-review"><blockquote class="arch-review__quote"><p>“Kitchen and washroom redesign was smooth from first visit to final handover.”</p></blockquote><figcaption class="arch-review__who"><strong>Amna Shah</strong><span>Renovation Client · Kasur</span></figcaption></figure>
+							<figure class="arch-review"><blockquote class="arch-review__quote"><p>“We needed accurate drawings and cost estimates. MSL Interior gave us both with practical options.”</p></blockquote><figcaption class="arch-review__who"><strong>Bilal Hassan</strong><span>Plot Owner · Lahore Road</span></figcaption></figure>
+							<figure class="arch-review"><blockquote class="arch-review__quote"><p>“Professional team for exterior elevations and lawn planning. Visuals made approval easy.”</p></blockquote><figcaption class="arch-review__who"><strong>Hassan Ali</strong><span>Villa Project · Elite City</span></figcaption></figure>
+							<figure class="arch-review"><blockquote class="arch-review__quote"><p>“Custom furniture and interior styling were done together, so every room felt complete.”</p></blockquote><figcaption class="arch-review__who"><strong>Fatima Noor</strong><span>Interior Client</span></figcaption></figure>
 							<figure class="arch-review" aria-hidden="true"><blockquote class="arch-review__quote"><p>“MSL Interior brought clarity to our home. From drawings to interiors, everything felt thoughtful and well coordinated.”</p></blockquote><figcaption class="arch-review__who"><strong>Sara Khan</strong><span>Private Client · Kasur</span></figcaption></figure>
 							<figure class="arch-review" aria-hidden="true"><blockquote class="arch-review__quote"><p>“Their 3D elevations helped our family decide quickly. Site supervision kept quality consistent throughout.”</p></blockquote><figcaption class="arch-review__who"><strong>Omar Riaz</strong><span>Homeowner · Elite City</span></figcaption></figure>
 							<figure class="arch-review" aria-hidden="true"><blockquote class="arch-review__quote"><p>“Modern, smart, luxury — they delivered exactly that. Furniture and finishes were carefully matched to the design.”</p></blockquote><figcaption class="arch-review__who"><strong>Nadia Ahmed</strong><span>Residential Client</span></figcaption></figure>
 							<figure class="arch-review" aria-hidden="true"><blockquote class="arch-review__quote"><p>“Kitchen and washroom redesign was smooth from first visit to final handover.”</p></blockquote><figcaption class="arch-review__who"><strong>Amna Shah</strong><span>Renovation Client · Kasur</span></figcaption></figure>
+							<figure class="arch-review" aria-hidden="true"><blockquote class="arch-review__quote"><p>“We needed accurate drawings and cost estimates. MSL Interior gave us both with practical options.”</p></blockquote><figcaption class="arch-review__who"><strong>Bilal Hassan</strong><span>Plot Owner · Lahore Road</span></figcaption></figure>
+							<figure class="arch-review" aria-hidden="true"><blockquote class="arch-review__quote"><p>“Professional team for exterior elevations and lawn planning. Visuals made approval easy.”</p></blockquote><figcaption class="arch-review__who"><strong>Hassan Ali</strong><span>Villa Project · Elite City</span></figcaption></figure>
+							<figure class="arch-review" aria-hidden="true"><blockquote class="arch-review__quote"><p>“Custom furniture and interior styling were done together, so every room felt complete.”</p></blockquote><figcaption class="arch-review__who"><strong>Fatima Noor</strong><span>Interior Client</span></figcaption></figure>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="arch-section arch-section--paper" id="contact">
+		<section class="arch-section arch-section--paper" id="faq">
+			<div class="arch-wrap">
+				<header class="arch-section__head">
+					<div>
+						<p class="arch-kicker">Common questions</p>
+						<h2 class="arch-h2">FAQ</h2>
+					</div>
+					<p class="arch-section__aside">Quick answers about our services, process, and how we begin a project together.</p>
+				</header>
+				<div class="arch-faq" data-arch-faq>
+					<div class="arch-faq__item is-open">
+						<button type="button" class="arch-faq__question" aria-expanded="true" aria-controls="faq-0" id="faq-btn-0"><span>What services do you offer?</span><span class="arch-faq__icon" aria-hidden="true"></span></button>
+						<div class="arch-faq__answer" id="faq-0" role="region"><p>We provide 2D & 3D drawings, 3D elevations & animations, interior & exterior designing, site visits & supervision, construction & renovation, cost & material estimation, customized furniture, property dealing & consultancy, plus web development and SEO.</p></div>
+					</div>
+					<div class="arch-faq__item">
+						<button type="button" class="arch-faq__question" aria-expanded="false" aria-controls="faq-1" id="faq-btn-1"><span>Do you offer a free consultation?</span><span class="arch-faq__icon" aria-hidden="true"></span></button>
+						<div class="arch-faq__answer" id="faq-1" role="region" hidden><p>Yes. Call or WhatsApp us for a free consultation. Share your location, project type, and goals — we will guide the next steps.</p></div>
+					</div>
+					<div class="arch-faq__item">
+						<button type="button" class="arch-faq__question" aria-expanded="false" aria-controls="faq-2" id="faq-btn-2"><span>Where are you based?</span><span class="arch-faq__icon" aria-hidden="true"></span></button>
+						<div class="arch-faq__answer" id="faq-2" role="region" hidden><p>Our studio is in Elite City, Kasur. We also support projects with site visits and supervision as needed.</p></div>
+					</div>
+					<div class="arch-faq__item">
+						<button type="button" class="arch-faq__question" aria-expanded="false" aria-controls="faq-3" id="faq-btn-3"><span>How can I contact MSL Interior?</span><span class="arch-faq__icon" aria-hidden="true"></span></button>
+						<div class="arch-faq__answer" id="faq-3" role="region" hidden><p>Call 0312-0411414 or 0301-4491812, message us on WhatsApp, or reach us as MSL Interiors & Architects on social media.</p></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="arch-section arch-section--mist" id="contact">
 			<div class="arch-wrap arch-contact">
 				<div class="arch-contact__info">
 					<p class="arch-kicker">Free consultation</p>
@@ -181,12 +317,28 @@
 						<div><dt>Phone</dt><dd><a href="tel:+923120411414">0312-0411414</a> / <a href="tel:+923014491812">0301-4491812</a></dd></div>
 						<div><dt>WhatsApp</dt><dd><a href="https://wa.me/923120411414" target="_blank" rel="noopener">0312-0411414</a></dd></div>
 						<div><dt>Studio</dt><dd>Elite City, Kasur</dd></div>
+						<div><dt>Social</dt><dd>MSL Interiors & Architects</dd></div>
 					</dl>
 				</div>
-				<div class="arch-contact__form-card">
-					<p class="note" style="border-radius:10px;margin-bottom:1rem;">This is a GitHub static preview. Contact form works on your live WordPress site (localhost / hosting).</p>
-					<p><a class="arch-btn arch-btn--solid" href="https://wa.me/923120411414" target="_blank" rel="noopener">WhatsApp consultation</a></p>
-				</div>
+				<form class="arch-contact__form-card" id="preview-consult" action="https://wa.me/923120411414" method="get" target="_blank" rel="noopener">
+					<p style="margin:0 0 .75rem;font-size:.9rem;color:#5c616a;">Tell us about your project — opens WhatsApp with your message.</p>
+					<label for="pname">Full name *</label>
+					<input id="pname" name="name" required placeholder="Your name" />
+					<label for="pphone">Phone *</label>
+					<input id="pphone" name="phone" required placeholder="03XX-XXXXXXX" />
+					<label for="ptype">Project type</label>
+					<select id="ptype">
+						<option value="">Select…</option>
+						<option>2D / 3D Drawings</option>
+						<option>Interior & Exterior Design</option>
+						<option>Construction & Renovation</option>
+						<option>Web Development / SEO</option>
+						<option>Other</option>
+					</select>
+					<label for="pmsg">Message *</label>
+					<textarea id="pmsg" required placeholder="Location, project type, and what you need…"></textarea>
+					<p style="margin:1rem 0 0"><button type="submit" class="arch-btn arch-btn--solid">Request free consultation</button></p>
+				</form>
 			</div>
 		</section>
 
@@ -202,6 +354,7 @@
 					<a href="#services">Services</a>
 					<a href="#projects">Projects</a>
 					<a href="#reviews">Reviews</a>
+					<a href="#faq">FAQ</a>
 					<a href="#contact">Contact</a>
 				</nav>
 				<p class="arch-footer__copy">&copy; 2026 MSL Interior</p>
@@ -209,6 +362,23 @@
 		</footer>
 	</main>
 
-	<script src="assets/portfolio.js"></script>
+	<script src="assets/portfolio.js" defer></script>
+	<script>
+		(function () {
+			var form = document.getElementById('preview-consult');
+			if (!form) return;
+			form.addEventListener('submit', function (e) {
+				e.preventDefault();
+				var name = document.getElementById('pname').value.trim();
+				var phone = document.getElementById('pphone').value.trim();
+				var type = document.getElementById('ptype').value.trim();
+				var msg = document.getElementById('pmsg').value.trim();
+				var lines = ['MSL Interior inquiry', 'Name: ' + name, 'Phone: ' + phone];
+				if (type) lines.push('Project: ' + type);
+				lines.push('Message: ' + msg);
+				window.open('https://wa.me/923120411414?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
+			});
+		})();
+	</script>
 </body>
 </html>
