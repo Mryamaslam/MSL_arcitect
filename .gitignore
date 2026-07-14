@@ -1,0 +1,15 @@
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+_img-preview/
+_studio-files.json
+*.map
+.cache/
+.idea/
+.vscode/
+*.zip
