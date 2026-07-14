@@ -16,11 +16,13 @@ With XAMPP running:
 
 ```powershell
 cd wp-content\themes\blocksy
-powershell -ExecutionPolicy Bypass -File tools\snapshot-preview.ps1
+python tools\snapshot_preview.py
 git add docs
 git commit -m "Refresh live preview snapshot"
 git push origin main
 ```
+
+This exports the homepage **and every project detail page** (so project cards open instead of 404).
 
 Pages rebuilds in about 1–2 minutes.
 
