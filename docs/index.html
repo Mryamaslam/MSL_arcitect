@@ -1,384 +1,1181 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!doctype html>
+<html lang="en-US">
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>MSL Interior — Preview</title>
-	<meta name="description" content="MSL Interiors & Architects — modern, smart, luxury spaces. Complete static preview." />
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link rel="preload" as="image" href="assets/img/hero-1.jpg" fetchpriority="high" />
-	<link rel="stylesheet" href="assets/portfolio.css" />
-	<style>
-		body { margin: 0; background: #f6f3ee; }
-		.preview-bar {
-			position: sticky; top: 0; z-index: 60;
-			display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; justify-content: space-between;
-			padding: 0.55rem 1.25rem; background: #16181c; color: #fff;
-			font-family: Manrope, Segoe UI, sans-serif; font-size: 0.8rem;
-		}
-		.preview-bar a { color: #d4b788; }
-		.preview-nav {
-			position: sticky; top: 36px; z-index: 50;
-			display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-			padding: 0.85rem clamp(1rem, 3vw, 2rem);
-			background: rgba(22,24,28,.45); backdrop-filter: blur(10px); color: #fff;
-			transition: background .25s ease, box-shadow .25s ease;
-		}
-		body.arch-nav-solid .preview-nav {
-			background: rgba(255,252,248,.96); color: #16181c;
-			box-shadow: 0 1px 0 rgba(22,24,28,.08);
-		}
-		body.arch-nav-solid .preview-nav a { color: #16181c; }
-		.preview-nav .brand {
-			display: flex; align-items: center; gap: .65rem;
-			font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: .92rem;
-			text-decoration: none; color: inherit;
-		}
-		.preview-nav .mark {
-			display: inline-flex; align-items: center; justify-content: center;
-			min-width: 2.2rem; height: 2.2rem; padding: 0 .3rem; border-radius: 7px;
-			background: linear-gradient(145deg,#d4b788,#8a6a3d); color: #16181c;
-			font-size: .65rem; font-weight: 800; letter-spacing: .06em;
-		}
-		.preview-nav nav { display: flex; flex-wrap: wrap; gap: .85rem 1.1rem; }
-		.preview-nav nav a {
-			color: #fff; text-decoration: none; font-size: .76rem;
-			letter-spacing: .08em; text-transform: uppercase; font-weight: 650;
-		}
-		.preview-nav .cta {
-			background: #2563eb; color: #fff !important; padding: .5rem .95rem;
-			border-radius: 8px; text-decoration: none; font-weight: 650; font-size: .8rem; white-space: nowrap;
-		}
-		.arch-hero { min-height: 78vh; position: relative; }
-		.arch-hero__carousel { position: absolute; inset: 0; overflow: hidden; }
-		.arch-hero__slide {
-			position: absolute; inset: 0;
-			background-size: cover; background-position: center;
-			opacity: 0; transition: opacity .8s ease;
-		}
-		.arch-hero__slide.is-active { opacity: 1; }
-		.arch-hero__shade {
-			position: absolute; inset: 0;
-			background: linear-gradient(180deg, rgba(15,17,20,.45) 0%, rgba(15,17,20,.55) 55%, rgba(15,17,20,.72) 100%);
-		}
-		.arch-about-media {
-			border-radius: 12px; overflow: hidden; aspect-ratio: 4/3;
-			background: #ece8e1;
-		}
-		.arch-about-media img {
-			width: 100%; height: 100%; object-fit: cover; display: block;
-		}
-		.arch-project__media img {
-			width: 100%; height: 100%; object-fit: cover; display: block;
-		}
-		.arch-contact__form-card {
-			background: #fffcf8; border: 1px solid rgba(22,24,28,.12);
-			border-radius: 12px; padding: 1.35rem;
-		}
-		.arch-contact__form-card label {
-			display: block; font-size: .82rem; font-weight: 650; margin: .65rem 0 .25rem;
-		}
-		.arch-contact__form-card input,
-		.arch-contact__form-card select,
-		.arch-contact__form-card textarea {
-			width: 100%; box-sizing: border-box; padding: .7rem .8rem;
-			border: 1px solid rgba(22,24,28,.16); border-radius: 8px;
-			font: inherit; background: #fff;
-		}
-		.arch-contact__form-card textarea { min-height: 110px; resize: vertical; }
-		@media (max-width: 860px) {
-			.preview-nav nav { display: none; }
-		}
-	</style>
-</head>
-<body class="arch-portfolio-page arch-nav-over-hero">
-	<div class="preview-bar">
-		<span>MSL Interior — complete GitHub preview</span>
-		<span><a href="https://github.com/Mryamaslam/MSL_arcitect">GitHub</a></span>
-	</div>
+<base href="/MSL_arcitect/">
+<link rel="preload" as="style" href="wp-content/themes/blocksy/inc/architecture-portfolio/portfolio.css">
+<style id="msl-preview-banner">
+#wpadminbar{display:none!important}
+html{margin-top:0!important}
+.msl-gh-banner{position:sticky;top:0;z-index:99999;background:#16181c;color:#fff;font:600 12px/1.4 Manrope,Segoe UI,sans-serif;padding:8px 14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.msl-gh-banner a{color:#d4b788}
+</style>
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
 
-	<header class="preview-nav" id="site-nav">
-		<a class="brand" href="#"><span class="mark">MSL</span> MSL Interior</a>
-		<nav>
-			<a href="#about">About</a>
-			<a href="#services">Services</a>
-			<a href="#projects">Projects</a>
-			<a href="#process">Process</a>
-			<a href="#reviews">Reviews</a>
-			<a href="#faq">FAQ</a>
-			<a href="#contact">Contact</a>
-		</nav>
-		<a class="cta" href="#contact">Contact Us</a>
-	</header>
+	<title>MSL Interior &#8211; Modern · Smart · Luxury — your dream space, our expertise.</title>
+<meta name='robots' content='noindex, nofollow' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel="alternate" type="application/rss+xml" title="MSL Interior &raquo; Feed" href="./feed/" />
+<link rel="alternate" type="application/rss+xml" title="MSL Interior &raquo; Comments Feed" href="./comments/feed/" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="./wp-json/oembed/1.0/embed?url=http%3A%2F%2Flocalhost%2Fwordpress%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="./wp-json/oembed/1.0/embed?url=http%3A%2F%2Flocalhost%2Fwordpress%2F&#038;format=xml" />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel='stylesheet' id='blocksy-dynamic-global-css' href='media/blocksy/css/global.css' media='all' />
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--palette-color-1: var(--theme-palette-color-1, #224DB7);--wp--preset--color--palette-color-2: var(--theme-palette-color-2, #1739A5);--wp--preset--color--palette-color-3: var(--theme-palette-color-3, #38454A);--wp--preset--color--palette-color-4: var(--theme-palette-color-4, #0A1821);--wp--preset--color--palette-color-5: var(--theme-palette-color-5, #F2F2F2);--wp--preset--color--palette-color-6: var(--theme-palette-color-6, #F8F8F8);--wp--preset--color--palette-color-7: var(--theme-palette-color-7, #FAFBFC);--wp--preset--color--palette-color-8: var(--theme-palette-color-8, #ffffff);--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--gradient--juicy-peach: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);--wp--preset--gradient--young-passion: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);--wp--preset--gradient--true-sunset: linear-gradient(to right, #fa709a 0%, #fee140 100%);--wp--preset--gradient--morpheus-den: linear-gradient(to top, #30cfd0 0%, #330867 100%);--wp--preset--gradient--plum-plate: linear-gradient(135deg, #667eea 0%, #764ba2 100%);--wp--preset--gradient--aqua-splash: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);--wp--preset--gradient--love-kiss: linear-gradient(to top, #ff0844 0%, #ffb199 100%);--wp--preset--gradient--new-retrowave: linear-gradient(to top, #3b41c5 0%, #a981bb 49%, #ffc8a9 100%);--wp--preset--gradient--plum-bath: linear-gradient(to top, #cc208e 0%, #6713d2 100%);--wp--preset--gradient--high-flight: linear-gradient(to right, #0acffe 0%, #495aff 100%);--wp--preset--gradient--teen-party: linear-gradient(135deg, #FF057C 0%, #8D0B93 50%, #321575 100%);--wp--preset--gradient--fabled-sunset: linear-gradient(135deg, #231557 0%, #44107A 29%, #FF1361 67%, #FFF800 100%);--wp--preset--gradient--arielle-smile: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);--wp--preset--gradient--itmeo-branding: linear-gradient(180deg, #2af598 0%, #009efd 100%);--wp--preset--gradient--deep-blue: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);--wp--preset--gradient--strong-bliss: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);--wp--preset--gradient--sweet-period: linear-gradient(to top, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%);--wp--preset--gradient--purple-division: linear-gradient(to top, #7028e4 0%, #e5b2ca 100%);--wp--preset--gradient--cold-evening: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);--wp--preset--gradient--mountain-rock: linear-gradient(to right, #868f96 0%, #596164 100%);--wp--preset--gradient--desert-hump: linear-gradient(to top, #c79081 0%, #dfa579 100%);--wp--preset--gradient--ethernal-constance: linear-gradient(to top, #09203f 0%, #537895 100%);--wp--preset--gradient--happy-memories: linear-gradient(300deg, #ff5858 0%, #f09819 100%);--wp--preset--gradient--grown-early: linear-gradient(to top, #0ba360 0%, #3cba92 100%);--wp--preset--gradient--morning-salad: linear-gradient(135deg, #B7F8DB 0%, #50A7C2 100%);--wp--preset--gradient--night-call: linear-gradient(135deg, #AC32E4 0%, #7918F2 48%, #4801FF 100%);--wp--preset--gradient--mind-crawl: linear-gradient(135deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);--wp--preset--gradient--angel-care: linear-gradient(135deg, #FFE29F 0%, #FFA99F 48%, #FF719A 100%);--wp--preset--gradient--juicy-cake: linear-gradient(to top, #e14fad 0%, #f9d423 100%);--wp--preset--gradient--rich-metal: linear-gradient(to right, #d7d2cc 0%, #304352 100%);--wp--preset--gradient--mole-hall: linear-gradient(340deg, #616161 0%, #9bc5c3 100%);--wp--preset--gradient--cloudy-knoxville: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);--wp--preset--gradient--soft-grass: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);--wp--preset--gradient--saint-petersburg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);--wp--preset--gradient--everlasting-sky: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);--wp--preset--gradient--kind-steel: linear-gradient(340deg, #e9defa 0%, #fbfcdb 100%);--wp--preset--gradient--over-sun: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);--wp--preset--gradient--premium-white: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);--wp--preset--gradient--clean-mirror: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);--wp--preset--gradient--wild-apple: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);--wp--preset--gradient--snow-again: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);--wp--preset--gradient--confident-cloud: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);--wp--preset--gradient--glass-water: linear-gradient(to top, #dfe9f3 0%, white 100%);--wp--preset--gradient--perfect-white: linear-gradient(135deg, #E3FDF5 0%, #FFE6FA 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: clamp(22px, 1.375rem + ((1vw - 3.2px) * 0.625), 30px);--wp--preset--font-size--x-large: clamp(30px, 1.875rem + ((1vw - 3.2px) * 1.563), 50px);--wp--preset--font-size--xx-large: clamp(45px, 2.813rem + ((1vw - 3.2px) * 2.734), 80px);--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:root { --wp--style--global--content-size: var(--theme-block-max-width);--wp--style--global--wide-size: var(--theme-block-wide-max-width); }:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: var(--theme-content-spacing); margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: var(--theme-content-spacing); }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: var(--theme-content-spacing);margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: var(--theme-content-spacing);margin-block-end: 0;}:root :where(.is-layout-flex){gap: var(--theme-content-spacing);}:root :where(.is-layout-grid){gap: var(--theme-content-spacing);}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){font-style: inherit;font-weight: inherit;letter-spacing: inherit;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-palette-color-1-color{color: var(--wp--preset--color--palette-color-1) !important;}.has-palette-color-2-color{color: var(--wp--preset--color--palette-color-2) !important;}.has-palette-color-3-color{color: var(--wp--preset--color--palette-color-3) !important;}.has-palette-color-4-color{color: var(--wp--preset--color--palette-color-4) !important;}.has-palette-color-5-color{color: var(--wp--preset--color--palette-color-5) !important;}.has-palette-color-6-color{color: var(--wp--preset--color--palette-color-6) !important;}.has-palette-color-7-color{color: var(--wp--preset--color--palette-color-7) !important;}.has-palette-color-8-color{color: var(--wp--preset--color--palette-color-8) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-palette-color-1-background-color{background-color: var(--wp--preset--color--palette-color-1) !important;}.has-palette-color-2-background-color{background-color: var(--wp--preset--color--palette-color-2) !important;}.has-palette-color-3-background-color{background-color: var(--wp--preset--color--palette-color-3) !important;}.has-palette-color-4-background-color{background-color: var(--wp--preset--color--palette-color-4) !important;}.has-palette-color-5-background-color{background-color: var(--wp--preset--color--palette-color-5) !important;}.has-palette-color-6-background-color{background-color: var(--wp--preset--color--palette-color-6) !important;}.has-palette-color-7-background-color{background-color: var(--wp--preset--color--palette-color-7) !important;}.has-palette-color-8-background-color{background-color: var(--wp--preset--color--palette-color-8) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-palette-color-1-border-color{border-color: var(--wp--preset--color--palette-color-1) !important;}.has-palette-color-2-border-color{border-color: var(--wp--preset--color--palette-color-2) !important;}.has-palette-color-3-border-color{border-color: var(--wp--preset--color--palette-color-3) !important;}.has-palette-color-4-border-color{border-color: var(--wp--preset--color--palette-color-4) !important;}.has-palette-color-5-border-color{border-color: var(--wp--preset--color--palette-color-5) !important;}.has-palette-color-6-border-color{border-color: var(--wp--preset--color--palette-color-6) !important;}.has-palette-color-7-border-color{border-color: var(--wp--preset--color--palette-color-7) !important;}.has-palette-color-8-border-color{border-color: var(--wp--preset--color--palette-color-8) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-juicy-peach-gradient-background{background: var(--wp--preset--gradient--juicy-peach) !important;}.has-young-passion-gradient-background{background: var(--wp--preset--gradient--young-passion) !important;}.has-true-sunset-gradient-background{background: var(--wp--preset--gradient--true-sunset) !important;}.has-morpheus-den-gradient-background{background: var(--wp--preset--gradient--morpheus-den) !important;}.has-plum-plate-gradient-background{background: var(--wp--preset--gradient--plum-plate) !important;}.has-aqua-splash-gradient-background{background: var(--wp--preset--gradient--aqua-splash) !important;}.has-love-kiss-gradient-background{background: var(--wp--preset--gradient--love-kiss) !important;}.has-new-retrowave-gradient-background{background: var(--wp--preset--gradient--new-retrowave) !important;}.has-plum-bath-gradient-background{background: var(--wp--preset--gradient--plum-bath) !important;}.has-high-flight-gradient-background{background: var(--wp--preset--gradient--high-flight) !important;}.has-teen-party-gradient-background{background: var(--wp--preset--gradient--teen-party) !important;}.has-fabled-sunset-gradient-background{background: var(--wp--preset--gradient--fabled-sunset) !important;}.has-arielle-smile-gradient-background{background: var(--wp--preset--gradient--arielle-smile) !important;}.has-itmeo-branding-gradient-background{background: var(--wp--preset--gradient--itmeo-branding) !important;}.has-deep-blue-gradient-background{background: var(--wp--preset--gradient--deep-blue) !important;}.has-strong-bliss-gradient-background{background: var(--wp--preset--gradient--strong-bliss) !important;}.has-sweet-period-gradient-background{background: var(--wp--preset--gradient--sweet-period) !important;}.has-purple-division-gradient-background{background: var(--wp--preset--gradient--purple-division) !important;}.has-cold-evening-gradient-background{background: var(--wp--preset--gradient--cold-evening) !important;}.has-mountain-rock-gradient-background{background: var(--wp--preset--gradient--mountain-rock) !important;}.has-desert-hump-gradient-background{background: var(--wp--preset--gradient--desert-hump) !important;}.has-ethernal-constance-gradient-background{background: var(--wp--preset--gradient--ethernal-constance) !important;}.has-happy-memories-gradient-background{background: var(--wp--preset--gradient--happy-memories) !important;}.has-grown-early-gradient-background{background: var(--wp--preset--gradient--grown-early) !important;}.has-morning-salad-gradient-background{background: var(--wp--preset--gradient--morning-salad) !important;}.has-night-call-gradient-background{background: var(--wp--preset--gradient--night-call) !important;}.has-mind-crawl-gradient-background{background: var(--wp--preset--gradient--mind-crawl) !important;}.has-angel-care-gradient-background{background: var(--wp--preset--gradient--angel-care) !important;}.has-juicy-cake-gradient-background{background: var(--wp--preset--gradient--juicy-cake) !important;}.has-rich-metal-gradient-background{background: var(--wp--preset--gradient--rich-metal) !important;}.has-mole-hall-gradient-background{background: var(--wp--preset--gradient--mole-hall) !important;}.has-cloudy-knoxville-gradient-background{background: var(--wp--preset--gradient--cloudy-knoxville) !important;}.has-soft-grass-gradient-background{background: var(--wp--preset--gradient--soft-grass) !important;}.has-saint-petersburg-gradient-background{background: var(--wp--preset--gradient--saint-petersburg) !important;}.has-everlasting-sky-gradient-background{background: var(--wp--preset--gradient--everlasting-sky) !important;}.has-kind-steel-gradient-background{background: var(--wp--preset--gradient--kind-steel) !important;}.has-over-sun-gradient-background{background: var(--wp--preset--gradient--over-sun) !important;}.has-premium-white-gradient-background{background: var(--wp--preset--gradient--premium-white) !important;}.has-clean-mirror-gradient-background{background: var(--wp--preset--gradient--clean-mirror) !important;}.has-wild-apple-gradient-background{background: var(--wp--preset--gradient--wild-apple) !important;}.has-snow-again-gradient-background{background: var(--wp--preset--gradient--snow-again) !important;}.has-confident-cloud-gradient-background{background: var(--wp--preset--gradient--confident-cloud) !important;}.has-glass-water-gradient-background{background: var(--wp--preset--gradient--glass-water) !important;}.has-perfect-white-gradient-background{background: var(--wp--preset--gradient--perfect-white) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-xx-large-font-size{font-size: var(--wp--preset--font-size--xx-large) !important;}
+:root :where(.wp-block-icon svg){width: 24px;}
+:root :where(.wp-block-pullquote){font-size: clamp(0.984em, 0.984rem + ((1vw - 0.2em) * 0.645), 1.5em);line-height: 1.6;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+<link rel='stylesheet' id='blocksy-fonts-font-source-google-css' href='https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;900&#038;display=swap' media='all' />
+<link rel='stylesheet' id='ct-main-styles-css' href='wp-content/themes/blocksy/static/bundle/main.min.css?ver=2.1.48' media='all' />
+<link rel='stylesheet' id='ct-elementor-styles-css' href='wp-content/themes/blocksy/static/bundle/elementor-frontend.min.css?ver=2.1.48' media='all' />
+<link rel='stylesheet' id='ct-wpforms-styles-css' href='wp-content/themes/blocksy/static/bundle/wpforms.min.css?ver=2.1.48' media='all' />
+<link rel='stylesheet' id='blocksy-arch-portfolio-css' href='wp-content/themes/blocksy/inc/architecture-portfolio/portfolio.css?ver=2.7.1' media='all' />
+<style id="blocksy-arch-portfolio-inline-css">
+body.arch-portfolio-page #header .ct-container{width:100%!important;max-width:none!important;padding-left:clamp(1rem,3vw,2rem)!important;padding-right:clamp(1rem,3vw,2rem)!important}.site-branding[data-id="logo"] .site-logo-container{display:flex!important;align-items:center!important}.site-branding[data-id="logo"] .site-logo-container img{display:none!important;height:clamp(36px,4.2vw,48px)!important;width:auto!important;max-width:min(220px,42vw)!important;object-fit:contain!important}body.arch-nav-over-hero .site-branding[data-id="logo"] .default-logo{display:block!important}body.arch-nav-solid .site-branding[data-id="logo"] .sticky-logo,body.arch-portfolio-page #header [data-sticky*=yes] .site-branding[data-id="logo"] .sticky-logo{display:block!important}body.arch-nav-solid .site-branding[data-id="logo"] .default-logo,body.arch-portfolio-page #header [data-sticky*=yes] .site-branding[data-id="logo"] .default-logo{display:none!important}.site-branding[data-id="logo"] .site-title-container{display:none!important}body.arch-nav-over-hero #header [data-id="menu"]>ul>li>a{color:#fff!important;-webkit-text-fill-color:#fff!important}body.arch-nav-solid #header [data-id="menu"]>ul>li>a,body.arch-portfolio-page #header [data-sticky*=yes] [data-id="menu"]>ul>li>a{color:#16181c!important;-webkit-text-fill-color:#16181c!important}
+/*# sourceURL=blocksy-arch-portfolio-inline-css */
+</style>
+<link rel='stylesheet' id='elementor-frontend-css' href='wp-content/plugins/elementor/assets/css/frontend.min.css?ver=4.1.4' media='all' />
+<style id="elementor-frontend-inline-css">
+.e-heading-base a, .e-paragraph-base a { all: unset; cursor: pointer; }form[data-element_type="e-form"].form-state-success [data-element_type="e-form-success-message"],form[data-element_type="e-form"].form-state-error [data-element_type="e-form-error-message"]{ display: block; }
+/*# sourceURL=elementor-frontend-inline-css */
+</style>
+<link rel='stylesheet' id='elementor-post-6-css' href='media/elementor/css/post-6.css' media='all' />
+<link rel='stylesheet' id='widget-heading-css' href='wp-content/plugins/elementor/assets/css/widget-heading.min.css?ver=4.1.4' media='all' />
+<link rel='stylesheet' id='widget-image-css' href='wp-content/plugins/elementor/assets/css/widget-image.min.css?ver=4.1.4' media='all' />
+<link rel='stylesheet' id='widget-counter-css' href='wp-content/plugins/elementor/assets/css/widget-counter.min.css?ver=4.1.4' media='all' />
+<link rel='stylesheet' id='widget-icon-box-css' href='wp-content/plugins/elementor/assets/css/widget-icon-box.min.css?ver=4.1.4' media='all' />
+<link rel='stylesheet' id='widget-divider-css' href='wp-content/plugins/elementor/assets/css/widget-divider.min.css?ver=4.1.4' media='all' />
+<link rel='stylesheet' id='elementor-post-795-css' href='media/elementor/css/post-795.css' media='all' />
+<link rel='stylesheet' id='base-desktop-css' href='media/elementor/css/base-desktop.css' media='all' />
+<link rel='stylesheet' id='elementor-gf-roboto-css' href='https://fonts.googleapis.com/css?family=Roboto:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&#038;display=swap' media='all' />
+<link rel='stylesheet' id='elementor-gf-robotoslab-css' href='https://fonts.googleapis.com/css?family=Roboto+Slab:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&#038;display=swap' media='all' />
+<script id="jquery-core-js" src="wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
+<script id="jquery-migrate-js" src="wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"></script>
+<link rel="https://api.w.org/" href="./wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="./wp-json/wp/v2/pages/795" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="./xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 7.0.1" />
+<link rel="canonical" href="#" />
+<link rel='shortlink' href='#' />
+<noscript><link rel='stylesheet' href='wp-content/themes/blocksy/static/bundle/no-scripts.min.css' type='text/css'></noscript>
+<style id="ct-main-styles-inline-css">[data-header*="type-1"] {--has-transparent-header:1;}</style>
+<meta name="generator" content="Elementor 4.1.4; features: e_font_icon_svg, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap">
+			<style>
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
+					background-image: none !important;
+				}
+				@media screen and (max-height: 1024px) {
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+				@media screen and (max-height: 640px) {
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+			</style>
+			<style id="wp-custom-css">
+.wpforms-submit {
+	font-size: 16px;
+	text-transform: uppercase;
+}
 
-	<main class="arch-site" id="primary">
-		<section class="arch-hero" data-arch-hero id="top">
-			<div class="arch-hero__carousel" aria-hidden="true">
-				<div class="arch-hero__slide is-active" style="background-image:url('assets/img/hero-1.jpg')"></div>
-				<div class="arch-hero__slide" style="background-image:url('assets/img/hero-2.jpg')"></div>
-				<div class="arch-hero__slide" style="background-image:url('assets/img/hero-3.jpg')"></div>
-				<div class="arch-hero__shade"></div>
-			</div>
-			<div class="arch-wrap arch-hero__content">
-				<p class="arch-kicker arch-kicker--on-dark">Modern · Smart · Luxury</p>
-				<h1 class="arch-hero__title">MSL Interior</h1>
-				<p class="arch-hero__lead">Modern · Smart · Luxury — your dream space, our expertise.</p>
-				<div class="arch-hero__actions">
-					<a class="arch-btn arch-btn--solid" href="#projects">View Projects</a>
-					<a class="arch-btn arch-btn--outline-light" href="#contact">Free Consultation</a>
+/* main icon boxes */
+.ct-iconbox .elementor-icon,
+.ct-iconbox .elementor-icon-box-title,
+.ct-iconbox .elementor-icon-box-description,
+.ct-iconbox:hover .elementor-button-text,
+.ct-iconbox:hover .elementor-button-icon {
+	transition: all 0.3s ease;
+}
+.ct-iconbox:hover .elementor-icon,
+.ct-iconbox:hover .elementor-icon-box-title,
+.ct-iconbox:hover .elementor-icon-box-description,
+.ct-iconbox:hover .elementor-button-text,
+.ct-iconbox:hover .elementor-button-icon  { 
+	fill: var(--theme-palette-color-8) !important;
+	color: var(--theme-palette-color-8) !important 
+}
+</style>
+	</head>
+
+
+<body class="home wp-singular page-template-default page page-id-795 wp-custom-logo wp-embed-responsive wp-theme-blocksy elementor-default elementor-kit-6 elementor-page elementor-page-795 arch-portfolio-page arch-nav-over-hero ct-elementor-default-template" data-link="type-2" data-prefix="single_page" data-header="type-1:sticky" data-footer="type-1" itemscope="itemscope" itemtype="https://schema.org/WebPage">`n<div class="msl-gh-banner"><span>MSL Interior — complete live snapshot (matches WordPress)</span><span><a href="https://github.com/Mryamaslam/MSL_arcitect">GitHub</a> · Edit on WordPress/XAMPP</span></div>
+
+<a class="skip-link screen-reader-text" href="#main">Skip to content</a><div class="ct-drawer-canvas" data-location="start"><div id="offcanvas" class="ct-panel ct-header" data-behaviour="modal" role="dialog" aria-label="Offcanvas modal" inert="">
+				<div class="ct-panel-actions">
+					
+					
+				<button class="ct-toggle-close" data-type="type-1" aria-label="Close drawer">
+					<svg class="ct-icon" width="12" height="12" viewBox="0 0 15 15"><path d="M1 15a1 1 0 01-.71-.29 1 1 0 010-1.41l5.8-5.8-5.8-5.8A1 1 0 011.7.29l5.8 5.8 5.8-5.8a1 1 0 011.41 1.41l-5.8 5.8 5.8 5.8a1 1 0 01-1.41 1.41l-5.8-5.8-5.8 5.8A1 1 0 011 15z"/></svg>
+				</button>
+			
 				</div>
+			<div class="ct-panel-content" data-device="desktop"><div class="ct-panel-content-inner"></div></div><div class="ct-panel-content" data-device="mobile"><div class="ct-panel-content-inner">
+<a href="#" class="site-logo-container" data-id="offcanvas-logo" rel="home" itemprop="url">
+			<img width="121" height="64" src="media/2022/07/logo-light-mobile.svg" class="default-logo" alt="MSL Interior" decoding="async" />	</a>
+
+
+<nav
+	class="mobile-menu menu-container"
+	data-id="mobile-menu" data-interaction="click" data-toggle-type="type-1" data-submenu-dots="yes"	aria-label="Main Menu">
+
+	<ul id="menu-main-menu" class=""><li id="menu-item-1439" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-795 current_page_item menu-item-1439"><a href="#" aria-current="page" class="ct-menu-link">Home</a></li>
+<li id="menu-item-1440" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1440"><a href="./services/" class="ct-menu-link">Services</a></li>
+<li id="menu-item-1441" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1441"><a href="./about-us/" class="ct-menu-link">About Us</a></li>
+<li id="menu-item-1438" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1438"><a href="./blog/" class="ct-menu-link">Blog</a></li>
+</ul></nav>
+
+
+<div
+	class="ct-header-cta"
+	data-id="button">
+	<a
+		href="https://startersites.io/blocksy/bizconsult/contact-us/"
+		class="ct-button"
+		data-size="large" aria-label="Contact Us">
+		Contact Us	</a>
+</div>
+</div></div></div></div>
+<div id="main-container">
+	<header id="header" class="ct-header" data-id="type-1" itemscope="" itemtype="https://schema.org/WPHeader"><div data-device="desktop" data-transparent=""><div class="ct-sticky-container"><div data-sticky="shrink"><div data-row="middle" data-column-set="3" data-transparent-row="yes"><div class="ct-container"><div data-column="start" data-placements="1"><div data-items="primary">
+<div	class="site-branding"
+	data-id="logo"	data-logo="left"	itemscope="itemscope" itemtype="https://schema.org/Organization">
+
+			<a href="#" class="site-logo-container" rel="home" itemprop="url" ><img fetchpriority="high" width="720" height="120" src="media/2026/07/msl-interior-logo-dark-v2.png" class="sticky-logo" alt="MSL Interior" decoding="async" /><img loading="lazy" width="720" height="120" src="media/2026/07/msl-interior-logo-light-v2.png" class="default-logo" alt="MSL Interior" decoding="async" /></a>	
+			<div class="site-title-container">
+			<span class="site-title " itemprop="name"><a href="#" rel="home" itemprop="url">MSL Interior</a></span>					</div>
+	  </div>
+
+</div></div><div data-column="middle"><div data-items="">
+<nav
+	id="header-menu-1"
+	class="header-menu-1 menu-container"
+	data-id="menu" data-interaction="hover"	data-menu="type-1"
+	data-dropdown="type-1:simple"		data-responsive="no"	itemscope="" itemtype="https://schema.org/SiteNavigationElement"	aria-label="Architecture Main">
+
+	<ul id="menu-architecture-main" class="menu"><li id="menu-item-1489" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-1489"><a href="#" aria-current="page" class="ct-menu-link">Home</a></li>
+<li id="menu-item-1490" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-1490"><a href="./#about" aria-current="page" class="ct-menu-link">About</a></li>
+<li id="menu-item-1491" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-1491"><a href="./#services" aria-current="page" class="ct-menu-link">Services</a></li>
+<li id="menu-item-1492" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-1492"><a href="./#projects" aria-current="page" class="ct-menu-link">Projects</a></li>
+<li id="menu-item-1493" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-1493"><a href="./#reviews" aria-current="page" class="ct-menu-link">Reviews</a></li>
+<li id="menu-item-1494" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-1494"><a href="./#faq" aria-current="page" class="ct-menu-link">FAQ</a></li>
+<li id="menu-item-1495" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-1495"><a href="./#contact" aria-current="page" class="ct-menu-link">Contact</a></li>
+</ul></nav>
+
+</div></div><div data-column="end" data-placements="1"><div data-items="primary">
+<div
+	class="ct-header-cta"
+	data-id="button">
+	<a
+		href="https://startersites.io/blocksy/bizconsult/contact-us/"
+		class="ct-button"
+		data-size="large" aria-label="Contact Us">
+		Contact Us	</a>
+</div>
+</div></div></div></div></div></div></div><div data-device="mobile" data-transparent=""><div class="ct-sticky-container"><div data-sticky="shrink"><div data-row="middle" data-column-set="2" data-transparent-row="yes"><div class="ct-container"><div data-column="start" data-placements="1"><div data-items="primary">
+<div	class="site-branding"
+	data-id="logo"	data-logo="left"	>
+
+			<a href="#" class="site-logo-container" rel="home" itemprop="url" ><img fetchpriority="high" width="720" height="120" src="media/2026/07/msl-interior-logo-dark-v2.png" class="sticky-logo" alt="MSL Interior" decoding="async" /><img loading="lazy" width="720" height="120" src="media/2026/07/msl-interior-logo-light-v2.png" class="default-logo" alt="MSL Interior" decoding="async" /></a>	
+			<div class="site-title-container">
+			<span class="site-title "><a href="#" rel="home" >MSL Interior</a></span>					</div>
+	  </div>
+
+</div></div><div data-column="end" data-placements="1"><div data-items="primary">
+<button
+	class="ct-header-trigger ct-toggle "
+	data-toggle-panel="#offcanvas"
+	aria-controls="offcanvas"
+	data-design="simple"
+	data-label="right"
+	aria-label="Menu"
+	data-id="trigger">
+
+	<span class="ct-label ct-hidden-sm ct-hidden-md ct-hidden-lg" aria-hidden="true">Menu</span>
+
+	<svg class="ct-icon" width="18" height="14" viewBox="0 0 18 14" data-type="type-1" aria-hidden="true">
+		<rect y="0.00" width="18" height="1.7" rx="1"/>
+		<rect y="6.15" width="18" height="1.7" rx="1"/>
+		<rect y="12.3" width="18" height="1.7" rx="1"/>
+	</svg></button>
+</div></div></div></div></div></div></div></header>
+	<main id="main" class="site-main hfeed" tabindex="-1">
+
+		
+<main class="arch-site" id="primary">
+
+	<!-- HERO -->
+	<section class="arch-hero" data-arch-hero>
+		<div class="arch-hero__carousel" aria-hidden="true">
+												<div class="arch-hero__slide is-active" style="background-image:url('media/2026/07/IMG_20251024_203802.jpg');"></div>
+									<div class="arch-hero__slide" style="background-image:url('media/2026/07/aeae109ac9c9b93892554578db876ea3.jpg');"></div>
+									<div class="arch-hero__slide" style="background-image:url('media/2026/07/FB_IMG_1760231990917.jpg');"></div>
+									<div class="arch-hero__slide" style="background-image:url('media/2026/07/FB_IMG_1760263020088.jpg');"></div>
+									<div class="arch-hero__slide" style="background-image:url('media/2026/07/cabef6657f2855f2e0043e9dfcadcfbb.jpg');"></div>
+										<div class="arch-hero__shade"></div>
+		</div>
+
+		<div class="arch-wrap arch-hero__content">
+			<p class="arch-kicker arch-kicker--on-dark">Modern · Smart · Luxury</p>
+			<h1 class="arch-hero__title">MSL Interior</h1>
+			<p class="arch-hero__lead">Modern · Smart · Luxury — your dream space, our expertise.</p>
+			<div class="arch-hero__actions">
+				<a class="arch-btn arch-btn--solid" href="#projects">View Projects</a>
+				<a class="arch-btn arch-btn--outline-light" href="#contact">Free Consultation</a>
 			</div>
-			<div class="arch-hero__controls">
+		</div>
+
+					<div class="arch-hero__controls">
 				<button type="button" class="arch-hero__nav" data-arch-hero-prev aria-label="Previous slide">‹</button>
 				<div class="arch-hero__dots">
-					<button type="button" class="arch-hero__dot is-active" data-arch-hero-dot="0" aria-label="Slide 1"></button>
-					<button type="button" class="arch-hero__dot" data-arch-hero-dot="1" aria-label="Slide 2"></button>
-					<button type="button" class="arch-hero__dot" data-arch-hero-dot="2" aria-label="Slide 3"></button>
-				</div>
+											<button type="button" class="arch-hero__dot is-active" data-arch-hero-dot="0" aria-label="Slide 1"></button>
+											<button type="button" class="arch-hero__dot" data-arch-hero-dot="1" aria-label="Slide 2"></button>
+											<button type="button" class="arch-hero__dot" data-arch-hero-dot="2" aria-label="Slide 3"></button>
+											<button type="button" class="arch-hero__dot" data-arch-hero-dot="3" aria-label="Slide 4"></button>
+											<button type="button" class="arch-hero__dot" data-arch-hero-dot="4" aria-label="Slide 5"></button>
+									</div>
 				<button type="button" class="arch-hero__nav" data-arch-hero-next aria-label="Next slide">›</button>
 			</div>
-		</section>
+			</section>
 
-		<section class="arch-band arch-band--ink" aria-label="Practice highlights">
-			<div class="arch-wrap arch-stats">
-				<div class="arch-stat"><strong>10</strong><span>Core services</span></div>
-				<div class="arch-stat"><strong>2D/3D</strong><span>Drawings & animations</span></div>
-				<div class="arch-stat"><strong>100%</strong><span>Site-focused delivery</span></div>
-				<div class="arch-stat"><strong>Free</strong><span>Consultation available</span></div>
+	<!-- STATS -->
+	<section class="arch-band arch-band--ink" aria-label="Practice highlights">
+		<div class="arch-wrap arch-stats">
+			<div class="arch-stat">
+				<strong>10</strong>
+				<span>Core services</span>
 			</div>
-		</section>
+			<div class="arch-stat">
+				<strong>2D/3D</strong>
+				<span>Drawings &amp; animations</span>
+			</div>
+			<div class="arch-stat">
+				<strong>100%</strong>
+				<span>Site-focused delivery</span>
+			</div>
+			<div class="arch-stat">
+				<strong>Free</strong>
+				<span>Consultation available</span>
+			</div>
+		</div>
+	</section>
 
-		<section class="arch-section arch-section--paper" id="about">
-			<div class="arch-wrap arch-split">
-				<div class="arch-split__intro">
-					<p class="arch-kicker">About MSL</p>
-					<h2 class="arch-h2">Your dream space — our expertise.</h2>
-					<div class="arch-about-media" style="margin-top:1.25rem">
-						<img src="assets/img/about.jpg" alt="MSL interior space" width="800" height="600" loading="lazy" decoding="async" />
-					</div>
+	<!-- ABOUT -->
+	<section class="arch-section arch-section--paper" id="about">
+		<div class="arch-wrap arch-split">
+			<div class="arch-split__intro">
+				<p class="arch-kicker">About MSL</p>
+				<h2 class="arch-h2">Your dream space — our expertise.</h2>
+			</div>
+			<div class="arch-split__body">
+				<p class="arch-lead">
+					MSL Interiors &amp; Architects designs modern, smart, and luxury spaces — from drawings and elevations to interiors, construction support, and custom furniture.				</p>
+				<p class="arch-text">
+					Based in Elite City, Kasur, we guide clients from visualization to site supervision so the finished project matches the design intent.				</p>
+				<ul class="arch-checklist">
+					<li>Interior &amp; exterior designing with 2D/3D visuals</li>
+					<li>Construction, renovation &amp; site supervision</li>
+					<li>Cost estimation, furniture &amp; property consultancy</li>
+				</ul>
+				<a class="arch-link" href="#services">Explore services →</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- SERVICES -->
+	<section class="arch-section arch-section--mist" id="services">
+		<div class="arch-wrap">
+			<header class="arch-section__head">
+				<div>
+					<p class="arch-kicker">What we offer</p>
+					<h2 class="arch-h2">Services</h2>
 				</div>
-				<div class="arch-split__body">
-					<p class="arch-lead">MSL Interiors & Architects designs modern, smart, and luxury spaces — from drawings and elevations to interiors, construction support, and custom furniture.</p>
-					<p class="arch-text">Based in Elite City, Kasur, we guide clients from visualization to site supervision so the finished project matches the design intent.</p>
-					<ul class="arch-checklist">
-						<li>Interior & exterior designing with 2D/3D visuals</li>
-						<li>Construction, renovation & site supervision</li>
-						<li>Cost estimation, furniture & property consultancy</li>
-					</ul>
-					<a class="arch-link" href="#services">Explore services →</a>
+				<p class="arch-section__aside">
+					From drawings and elevations to interiors, furniture, consultancy, web development, and SEO — ten services under one team.				</p>
+			</header>
+
+			<div class="arch-services">
+									<article class="arch-service">
+						<span class="arch-service__num">01</span>
+						<h3 class="arch-service__title">2D &amp; 3D Drawings</h3>
+						<p class="arch-service__text">Accurate 2D plans and immersive 3D drawings so you can see every detail before work begins.</p>
+						<a class="arch-link" href="#contact">Ask about this →</a>
+					</article>
+									<article class="arch-service">
+						<span class="arch-service__num">02</span>
+						<h3 class="arch-service__title">3D Elevations &amp; Animations</h3>
+						<p class="arch-service__text">Photoreal elevations and walkthrough animations that bring your facade and interiors to life.</p>
+						<a class="arch-link" href="#contact">Ask about this →</a>
+					</article>
+									<article class="arch-service">
+						<span class="arch-service__num">03</span>
+						<h3 class="arch-service__title">Interior &amp; Exterior Designing</h3>
+						<p class="arch-service__text">Complete interior and exterior design — modern, smart, and luxury spaces tailored to your lifestyle.</p>
+						<a class="arch-link" href="#contact">Ask about this →</a>
+					</article>
+									<article class="arch-service">
+						<span class="arch-service__num">04</span>
+						<h3 class="arch-service__title">Site Visits &amp; Supervision</h3>
+						<p class="arch-service__text">On-site visits and site supervision so execution matches the approved design and quality.</p>
+						<a class="arch-link" href="#contact">Ask about this →</a>
+					</article>
+									<article class="arch-service">
+						<span class="arch-service__num">05</span>
+						<h3 class="arch-service__title">Construction &amp; Renovation</h3>
+						<p class="arch-service__text">New builds and renovations managed with clear coordination from concept to handover.</p>
+						<a class="arch-link" href="#contact">Ask about this →</a>
+					</article>
+									<article class="arch-service">
+						<span class="arch-service__num">06</span>
+						<h3 class="arch-service__title">Cost &amp; Material Estimation</h3>
+						<p class="arch-service__text">Transparent cost and material estimates so you plan budget, finishes, and scope with confidence.</p>
+						<a class="arch-link" href="#contact">Ask about this →</a>
+					</article>
+									<article class="arch-service">
+						<span class="arch-service__num">07</span>
+						<h3 class="arch-service__title">Customized Furniture</h3>
+						<p class="arch-service__text">Bespoke furniture designed for your space — fitted, functional, and on-brand with the interiors.</p>
+						<a class="arch-link" href="#contact">Ask about this →</a>
+					</article>
+									<article class="arch-service">
+						<span class="arch-service__num">08</span>
+						<h3 class="arch-service__title">Property Dealing &amp; Consultancy</h3>
+						<p class="arch-service__text">Property dealing support and consultancy for smarter decisions on plots, homes, and investments.</p>
+						<a class="arch-link" href="#contact">Ask about this →</a>
+					</article>
+									<article class="arch-service">
+						<span class="arch-service__num">09</span>
+						<h3 class="arch-service__title">Web Development</h3>
+						<p class="arch-service__text">Custom websites for your business — fast, mobile-friendly, and designed to showcase your brand online.</p>
+						<a class="arch-link" href="#contact">Ask about this →</a>
+					</article>
+									<article class="arch-service">
+						<span class="arch-service__num">10</span>
+						<h3 class="arch-service__title">SEO</h3>
+						<p class="arch-service__text">Search engine optimization so clients can find you on Google — local reach, keywords, and better rankings.</p>
+						<a class="arch-link" href="#contact">Ask about this →</a>
+					</article>
+							</div>
+		</div>
+	</section>
+
+	<!-- PROCESS -->
+	<section class="arch-section arch-section--ink" id="process">
+		<div class="arch-wrap">
+			<header class="arch-section__head arch-section__head--on-dark">
+				<div>
+					<p class="arch-kicker arch-kicker--on-dark">How we work</p>
+					<h2 class="arch-h2 arch-h2--on-dark">A clear process from brief to site</h2>
 				</div>
-			</div>
-		</section>
+			</header>
+			<ol class="arch-steps">
+									<li class="arch-step">
+						<span class="arch-step__index">01</span>
+						<h3 class="arch-step__title">Listen &amp; Survey</h3>
+						<p class="arch-step__text">We understand your needs, site, and budget — then map a clear design direction.</p>
+					</li>
+									<li class="arch-step">
+						<span class="arch-step__index">02</span>
+						<h3 class="arch-step__title">Design &amp; Visualize</h3>
+						<p class="arch-step__text">2D/3D drawings, elevations, and interiors developed so you can review before build.</p>
+					</li>
+									<li class="arch-step">
+						<span class="arch-step__index">03</span>
+						<h3 class="arch-step__title">Estimate &amp; Plan</h3>
+						<p class="arch-step__text">Cost and material estimates prepared with practical options for finishes and furniture.</p>
+					</li>
+									<li class="arch-step">
+						<span class="arch-step__index">04</span>
+						<h3 class="arch-step__title">Supervise &amp; Deliver</h3>
+						<p class="arch-step__text">Site visits, supervision, and renovation support until your dream space is ready.</p>
+					</li>
+							</ol>
+		</div>
+	</section>
 
-		<section class="arch-section arch-section--mist" id="services">
-			<div class="arch-wrap">
-				<header class="arch-section__head">
-					<div>
-						<p class="arch-kicker">What we offer</p>
-						<h2 class="arch-h2">Services</h2>
-					</div>
-					<p class="arch-section__aside">From drawings and elevations to interiors, furniture, consultancy, web development, and SEO — ten services under one team.</p>
-				</header>
-				<div class="arch-services">
-					<article class="arch-service"><span class="arch-service__num">01</span><h3 class="arch-service__title">2D & 3D Drawings</h3><p class="arch-service__text">Accurate 2D plans and immersive 3D drawings so you can see every detail before work begins.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
-					<article class="arch-service"><span class="arch-service__num">02</span><h3 class="arch-service__title">3D Elevations & Animations</h3><p class="arch-service__text">Photoreal elevations and walkthrough animations that bring your facade and interiors to life.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
-					<article class="arch-service"><span class="arch-service__num">03</span><h3 class="arch-service__title">Interior & Exterior Designing</h3><p class="arch-service__text">Complete interior and exterior design — modern, smart, and luxury spaces tailored to your lifestyle.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
-					<article class="arch-service"><span class="arch-service__num">04</span><h3 class="arch-service__title">Site Visits & Supervision</h3><p class="arch-service__text">On-site visits and site supervision so execution matches the approved design and quality.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
-					<article class="arch-service"><span class="arch-service__num">05</span><h3 class="arch-service__title">Construction & Renovation</h3><p class="arch-service__text">New builds and renovations managed with clear coordination from concept to handover.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
-					<article class="arch-service"><span class="arch-service__num">06</span><h3 class="arch-service__title">Cost & Material Estimation</h3><p class="arch-service__text">Transparent cost and material estimates so you plan budget, finishes, and scope with confidence.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
-					<article class="arch-service"><span class="arch-service__num">07</span><h3 class="arch-service__title">Customized Furniture</h3><p class="arch-service__text">Bespoke furniture designed for your space — fitted, functional, and on-brand with the interiors.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
-					<article class="arch-service"><span class="arch-service__num">08</span><h3 class="arch-service__title">Property Dealing & Consultancy</h3><p class="arch-service__text">Property dealing support and consultancy for smarter decisions on plots, homes, and investments.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
-					<article class="arch-service"><span class="arch-service__num">09</span><h3 class="arch-service__title">Web Development</h3><p class="arch-service__text">Custom websites for your business — fast, mobile-friendly, and designed to showcase your brand online.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
-					<article class="arch-service"><span class="arch-service__num">10</span><h3 class="arch-service__title">SEO</h3><p class="arch-service__text">Search engine optimization so clients can find you on Google — local reach, keywords, and better rankings.</p><a class="arch-link" href="#contact">Ask about this →</a></article>
+	<!-- PROJECTS -->
+	<section class="arch-section arch-section--paper arch-section--projects" id="projects">
+		<div class="arch-wrap">
+			<header class="arch-section__head">
+				<div>
+					<p class="arch-kicker">Portfolio</p>
+					<h2 class="arch-h2">Selected projects</h2>
 				</div>
-			</div>
-		</section>
+				<p class="arch-section__aside">
+					Filter by room — Bedroom, Kitchen, Washroom, Living, Lawn, and more.				</p>
+			</header>
 
-		<section class="arch-section arch-section--ink" id="process">
-			<div class="arch-wrap">
-				<header class="arch-section__head arch-section__head--on-dark">
-					<div>
-						<p class="arch-kicker arch-kicker--on-dark">How we work</p>
-						<h2 class="arch-h2 arch-h2--on-dark">A clear process from brief to site</h2>
-					</div>
-				</header>
-				<ol class="arch-steps">
-					<li class="arch-step"><span class="arch-step__index">01</span><h3 class="arch-step__title">Listen & Survey</h3><p class="arch-step__text">We understand your needs, site, and budget — then map a clear design direction.</p></li>
-					<li class="arch-step"><span class="arch-step__index">02</span><h3 class="arch-step__title">Design & Visualize</h3><p class="arch-step__text">2D/3D drawings, elevations, and interiors developed so you can review before build.</p></li>
-					<li class="arch-step"><span class="arch-step__index">03</span><h3 class="arch-step__title">Estimate & Plan</h3><p class="arch-step__text">Cost and material estimates prepared with practical options for finishes and furniture.</p></li>
-					<li class="arch-step"><span class="arch-step__index">04</span><h3 class="arch-step__title">Supervise & Deliver</h3><p class="arch-step__text">Site visits, supervision, and renovation support until your dream space is ready.</p></li>
-				</ol>
-			</div>
-		</section>
-
-		<section class="arch-section arch-section--paper arch-section--projects" id="projects">
-			<div class="arch-wrap">
-				<header class="arch-section__head">
-					<div>
-						<p class="arch-kicker">Portfolio</p>
-						<h2 class="arch-h2">Selected projects</h2>
-					</div>
-					<p class="arch-section__aside">Filter by room — Bedroom, Kitchen, Washroom, Living, Lawn, and more.</p>
-				</header>
-				<div class="arch-filters" data-arch-filters role="tablist" aria-label="Filter projects">
+							<div class="arch-filters" data-arch-filters role="tablist" aria-label="Filter projects">
 					<button type="button" class="arch-chip is-active" data-filter="all" role="tab" aria-selected="true">All</button>
-					<button type="button" class="arch-chip" data-filter="bedroom" role="tab">Bedroom</button>
-					<button type="button" class="arch-chip" data-filter="kitchen" role="tab">Kitchen</button>
-					<button type="button" class="arch-chip" data-filter="washroom" role="tab">Washroom</button>
-					<button type="button" class="arch-chip" data-filter="living" role="tab">Living</button>
-					<button type="button" class="arch-chip" data-filter="lawn" role="tab">Lawn</button>
-					<button type="button" class="arch-chip" data-filter="exterior" role="tab">Exterior</button>
-					<button type="button" class="arch-chip" data-filter="elevations" role="tab">Elevations</button>
-				</div>
-				<div class="arch-projects" data-arch-projects>
-					<article class="arch-project" data-categories="bedroom"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="assets/img/proj-bedroom.jpg" alt="" width="640" height="480" loading="lazy" decoding="async" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Bedroom</span><span class="arch-project__title">Bedroom Interiors</span><span class="arch-project__cta">View project →</span></span></a></article>
-					<article class="arch-project" data-categories="kitchen"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="assets/img/proj-kitchen.jpg" alt="" width="640" height="480" loading="lazy" decoding="async" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Kitchen</span><span class="arch-project__title">Kitchen Design</span><span class="arch-project__cta">View project →</span></span></a></article>
-					<article class="arch-project" data-categories="washroom"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="assets/img/proj-washroom.jpg" alt="" width="640" height="480" loading="lazy" decoding="async" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Washroom</span><span class="arch-project__title">Washroom & Bath</span><span class="arch-project__cta">View project →</span></span></a></article>
-					<article class="arch-project" data-categories="living"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="assets/img/proj-living.jpg" alt="" width="640" height="480" loading="lazy" decoding="async" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Living</span><span class="arch-project__title">Living & TV Lounge</span><span class="arch-project__cta">View project →</span></span></a></article>
-					<article class="arch-project" data-categories="lawn"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="assets/img/proj-lawn.jpg" alt="" width="640" height="480" loading="lazy" decoding="async" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Lawn</span><span class="arch-project__title">Lawn & Outdoor</span><span class="arch-project__cta">View project →</span></span></a></article>
-					<article class="arch-project" data-categories="exterior elevations"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="assets/img/proj-exterior.jpg" alt="" width="640" height="480" loading="lazy" decoding="async" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Exterior</span><span class="arch-project__title">Exterior Facades</span><span class="arch-project__cta">View project →</span></span></a></article>
-					<article class="arch-project" data-categories="elevations"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="assets/img/proj-elevation.jpg" alt="" width="640" height="480" loading="lazy" decoding="async" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Elevations</span><span class="arch-project__title">Front Elevations</span><span class="arch-project__cta">View project →</span></span></a></article>
-					<article class="arch-project" data-categories="model exterior"><a class="arch-project__link" href="#contact"><span class="arch-project__media"><img src="assets/img/proj-model.jpg" alt="" width="640" height="480" loading="lazy" decoding="async" /><span class="arch-project__veil"></span></span><span class="arch-project__body"><span class="arch-project__meta">Model</span><span class="arch-project__title">Scale Models</span><span class="arch-project__cta">View project →</span></span></a></article>
-				</div>
+											<button type="button" class="arch-chip" data-filter="bedroom" role="tab" aria-selected="false">Bedroom</button>
+											<button type="button" class="arch-chip" data-filter="kitchen" role="tab" aria-selected="false">Kitchen</button>
+											<button type="button" class="arch-chip" data-filter="washroom" role="tab" aria-selected="false">Washroom</button>
+											<button type="button" class="arch-chip" data-filter="living" role="tab" aria-selected="false">Living</button>
+											<button type="button" class="arch-chip" data-filter="lawn" role="tab" aria-selected="false">Lawn</button>
+											<button type="button" class="arch-chip" data-filter="exterior" role="tab" aria-selected="false">Exterior</button>
+											<button type="button" class="arch-chip" data-filter="model" role="tab" aria-selected="false">Model</button>
+											<button type="button" class="arch-chip" data-filter="residential" role="tab" aria-selected="false">Residential</button>
+											<button type="button" class="arch-chip" data-filter="commercial" role="tab" aria-selected="false">Commercial</button>
+											<button type="button" class="arch-chip" data-filter="interior" role="tab" aria-selected="false">Interior</button>
+											<button type="button" class="arch-chip" data-filter="elevations" role="tab" aria-selected="false">Elevations</button>
+									</div>
+			
+			
+							<div class="arch-projects" data-arch-projects>
+											<article class="arch-project" data-categories="exterior">
+							<a class="arch-project__link" href="./projects/exterior-facades-process/">
+								<span class="arch-project__media">
+									<img loading="lazy" width="648" height="658" src="media/2026/07/IMG_20251024_203802.jpg" class="attachment-large size-large wp-post-image" alt="" loading="lazy" decoding="async" />									<span class="arch-project__veil" aria-hidden="true"></span>
+								</span>
+								<span class="arch-project__body">
+																			<span class="arch-project__meta">Exterior</span>
+																		<span class="arch-project__title">Exterior Facades &#038; Site</span>
+									<span class="arch-project__cta">View project →</span>
+								</span>
+							</a>
+						</article>
+											<article class="arch-project" data-categories="bedroom">
+							<a class="arch-project__link" href="./projects/bedroom-interiors/">
+								<span class="arch-project__media">
+									<img loading="lazy" width="1024" height="1024" src="media/2026/07/FB_IMG_1760231990917.jpg" class="attachment-large size-large wp-post-image" alt="" loading="lazy" decoding="async" />									<span class="arch-project__veil" aria-hidden="true"></span>
+								</span>
+								<span class="arch-project__body">
+																			<span class="arch-project__meta">Bedroom</span>
+																		<span class="arch-project__title">Bedroom Interiors</span>
+									<span class="arch-project__cta">View project →</span>
+								</span>
+							</a>
+						</article>
+											<article class="arch-project" data-categories="kitchen">
+							<a class="arch-project__link" href="./projects/kitchen-design/">
+								<span class="arch-project__media">
+									<img loading="lazy" width="1024" height="768" src="media/2026/07/FB_IMG_1760263020088.jpg" class="attachment-large size-large wp-post-image" alt="" loading="lazy" decoding="async" />									<span class="arch-project__veil" aria-hidden="true"></span>
+								</span>
+								<span class="arch-project__body">
+																			<span class="arch-project__meta">Kitchen</span>
+																		<span class="arch-project__title">Kitchen Design</span>
+									<span class="arch-project__cta">View project →</span>
+								</span>
+							</a>
+						</article>
+											<article class="arch-project" data-categories="washroom">
+							<a class="arch-project__link" href="./projects/washroom-bath/">
+								<span class="arch-project__media">
+									<img loading="lazy" width="832" height="832" src="media/2026/07/cabef6657f2855f2e0043e9dfcadcfbb.jpg" class="attachment-large size-large wp-post-image" alt="" loading="lazy" decoding="async" />									<span class="arch-project__veil" aria-hidden="true"></span>
+								</span>
+								<span class="arch-project__body">
+																			<span class="arch-project__meta">Washroom</span>
+																		<span class="arch-project__title">Washroom &#038; Bath</span>
+									<span class="arch-project__cta">View project →</span>
+								</span>
+							</a>
+						</article>
+											<article class="arch-project" data-categories="living">
+							<a class="arch-project__link" href="./projects/living-tv-lounge/">
+								<span class="arch-project__media">
+									<img loading="lazy" width="736" height="920" src="media/2026/07/FB_IMG_1760576658863.jpg" class="attachment-large size-large wp-post-image" alt="" loading="lazy" decoding="async" />									<span class="arch-project__veil" aria-hidden="true"></span>
+								</span>
+								<span class="arch-project__body">
+																			<span class="arch-project__meta">Living</span>
+																		<span class="arch-project__title">Living &#038; TV Lounge</span>
+									<span class="arch-project__cta">View project →</span>
+								</span>
+							</a>
+						</article>
+											<article class="arch-project" data-categories="lawn">
+							<a class="arch-project__link" href="./projects/lawn-outdoor-living/">
+								<span class="arch-project__media">
+									<img loading="lazy" width="640" height="853" src="media/2026/07/2a534189cc0d9c24ab5cc2c949b521bc.jpg" class="attachment-large size-large wp-post-image" alt="" loading="lazy" decoding="async" />									<span class="arch-project__veil" aria-hidden="true"></span>
+								</span>
+								<span class="arch-project__body">
+																			<span class="arch-project__meta">Lawn</span>
+																		<span class="arch-project__title">Lawn &#038; Outdoor Living</span>
+									<span class="arch-project__cta">View project →</span>
+								</span>
+							</a>
+						</article>
+											<article class="arch-project" data-categories="model">
+							<a class="arch-project__link" href="./projects/scale-models-process/">
+								<span class="arch-project__media">
+									<img loading="lazy" width="1024" height="1024" src="media/2026/07/aeae109ac9c9b93892554578db876ea3.jpg" class="attachment-large size-large wp-post-image" alt="" loading="lazy" decoding="async" />									<span class="arch-project__veil" aria-hidden="true"></span>
+								</span>
+								<span class="arch-project__body">
+																			<span class="arch-project__meta">Model</span>
+																		<span class="arch-project__title">Scale Models &#038; Process</span>
+									<span class="arch-project__cta">View project →</span>
+								</span>
+							</a>
+						</article>
+											<article class="arch-project" data-categories="elevations">
+							<a class="arch-project__link" href="./projects/front-elevations/">
+								<span class="arch-project__media">
+									<img loading="lazy" width="939" height="1024" src="media/2026/07/3D-Front-Elevation.jpg" class="attachment-large size-large wp-post-image" alt="" loading="lazy" decoding="async" />									<span class="arch-project__veil" aria-hidden="true"></span>
+								</span>
+								<span class="arch-project__body">
+																			<span class="arch-project__meta">Elevations</span>
+																		<span class="arch-project__title">Front Elevations</span>
+									<span class="arch-project__cta">View project →</span>
+								</span>
+							</a>
+						</article>
+											<article class="arch-project" data-categories="residential">
+							<a class="arch-project__link" href="./projects/mushtaq-house/">
+								<span class="arch-project__media">
+									<img loading="lazy" width="1024" height="819" src="media/2026/07/Bedroom-1-1-3.jpg" class="attachment-large size-large wp-post-image" alt="" loading="lazy" decoding="async" />									<span class="arch-project__veil" aria-hidden="true"></span>
+								</span>
+								<span class="arch-project__body">
+																			<span class="arch-project__meta">Residential</span>
+																		<span class="arch-project__title">Mushtaq House</span>
+									<span class="arch-project__cta">View project →</span>
+								</span>
+							</a>
+						</article>
+											<article class="arch-project" data-categories="commercial">
+							<a class="arch-project__link" href="./projects/sardar-marriage-hall/">
+								<span class="arch-project__media">
+									<img loading="lazy" width="1024" height="576" src="media/2026/07/Dresser-Side-View.jpg" class="attachment-large size-large wp-post-image" alt="" loading="lazy" decoding="async" />									<span class="arch-project__veil" aria-hidden="true"></span>
+								</span>
+								<span class="arch-project__body">
+																			<span class="arch-project__meta">Commercial</span>
+																		<span class="arch-project__title">Sardar Marriage Hall</span>
+									<span class="arch-project__cta">View project →</span>
+								</span>
+							</a>
+						</article>
+											<article class="arch-project" data-categories="elevations">
+							<a class="arch-project__link" href="./projects/mr-ahmad/">
+								<span class="arch-project__media">
+									<img loading="lazy" width="1024" height="819" src="media/2026/07/Mr.-Ahmad-Front-Elevation.jpg" class="attachment-large size-large wp-post-image" alt="" loading="lazy" decoding="async" />									<span class="arch-project__veil" aria-hidden="true"></span>
+								</span>
+								<span class="arch-project__body">
+																			<span class="arch-project__meta">Elevations</span>
+																		<span class="arch-project__title">Mr. Ahmad</span>
+									<span class="arch-project__cta">View project →</span>
+								</span>
+							</a>
+						</article>
+											<article class="arch-project" data-categories="elevations">
+							<a class="arch-project__link" href="./projects/mr-nasir-gujrat/">
+								<span class="arch-project__media">
+									<img loading="lazy" width="1024" height="819" src="media/2026/07/Mr.-Nasir-Gujrat-Project.jpg" class="attachment-large size-large wp-post-image" alt="" loading="lazy" decoding="async" />									<span class="arch-project__veil" aria-hidden="true"></span>
+								</span>
+								<span class="arch-project__body">
+																			<span class="arch-project__meta">Elevations</span>
+																		<span class="arch-project__title">Mr. Nasir Gujrat</span>
+									<span class="arch-project__cta">View project →</span>
+								</span>
+							</a>
+						</article>
+											<article class="arch-project" data-categories="elevations">
+							<a class="arch-project__link" href="./projects/yasir-dogar/">
+								<span class="arch-project__media">
+									<img loading="lazy" width="1024" height="776" src="media/2026/07/Yasir-Dogar.jpg" class="attachment-large size-large wp-post-image" alt="" loading="lazy" decoding="async" />									<span class="arch-project__veil" aria-hidden="true"></span>
+								</span>
+								<span class="arch-project__body">
+																			<span class="arch-project__meta">Elevations</span>
+																		<span class="arch-project__title">Yasir Dogar</span>
+									<span class="arch-project__cta">View project →</span>
+								</span>
+							</a>
+						</article>
+											<article class="arch-project" data-categories="residential">
+							<a class="arch-project__link" href="./projects/mr-shoakat-residence/">
+								<span class="arch-project__media">
+									<img loading="lazy" width="1024" height="819" src="media/2026/07/Living-Drawing-1.png" class="attachment-large size-large wp-post-image" alt="" loading="lazy" decoding="async" />									<span class="arch-project__veil" aria-hidden="true"></span>
+								</span>
+								<span class="arch-project__body">
+																			<span class="arch-project__meta">Residential</span>
+																		<span class="arch-project__title">Mr. Shoakat Residence</span>
+									<span class="arch-project__cta">View project →</span>
+								</span>
+							</a>
+						</article>
+											<article class="arch-project" data-categories="residential">
+							<a class="arch-project__link" href="./projects/mr-waseem-residence/">
+								<span class="arch-project__media">
+									<img loading="lazy" width="1024" height="639" src="media/2026/07/Classic-Front-Elevation.jpg" class="attachment-large size-large wp-post-image" alt="" loading="lazy" decoding="async" />									<span class="arch-project__veil" aria-hidden="true"></span>
+								</span>
+								<span class="arch-project__body">
+																			<span class="arch-project__meta">Residential</span>
+																		<span class="arch-project__title">Mr. Waseem Residence</span>
+									<span class="arch-project__cta">View project →</span>
+								</span>
+							</a>
+						</article>
+											<article class="arch-project" data-categories="residential">
+							<a class="arch-project__link" href="./projects/mr-kamran-residence/">
+								<span class="arch-project__media">
+									<img loading="lazy" width="967" height="1024" src="media/2026/07/22.5ft-Front-Elevation.jpg" class="attachment-large size-large wp-post-image" alt="" loading="lazy" decoding="async" />									<span class="arch-project__veil" aria-hidden="true"></span>
+								</span>
+								<span class="arch-project__body">
+																			<span class="arch-project__meta">Residential</span>
+																		<span class="arch-project__title">Mr. Kamran Residence</span>
+									<span class="arch-project__cta">View project →</span>
+								</span>
+							</a>
+						</article>
+											<article class="arch-project" data-categories="residential">
+							<a class="arch-project__link" href="./projects/mr-mudasar-residence/">
+								<span class="arch-project__media">
+									<img loading="lazy" width="1024" height="819" src="media/2026/07/Bedroom-1-1-1.jpg" class="attachment-large size-large wp-post-image" alt="" loading="lazy" decoding="async" />									<span class="arch-project__veil" aria-hidden="true"></span>
+								</span>
+								<span class="arch-project__body">
+																			<span class="arch-project__meta">Residential</span>
+																		<span class="arch-project__title">Mr. Mudasar Residence</span>
+									<span class="arch-project__cta">View project →</span>
+								</span>
+							</a>
+						</article>
+											<article class="arch-project" data-categories="interior">
+							<a class="arch-project__link" href="./projects/interior-spaces-collection/">
+								<span class="arch-project__media">
+									<img loading="lazy" width="1024" height="819" src="media/2026/07/Bedroom-1-1.jpg" class="attachment-large size-large wp-post-image" alt="" loading="lazy" decoding="async" />									<span class="arch-project__veil" aria-hidden="true"></span>
+								</span>
+								<span class="arch-project__body">
+																			<span class="arch-project__meta">Interior</span>
+																		<span class="arch-project__title">Interior Spaces Collection</span>
+									<span class="arch-project__cta">View project →</span>
+								</span>
+							</a>
+						</article>
+											<article class="arch-project" data-categories="residential">
+							<a class="arch-project__link" href="./projects/4-marla-residence/">
+								<span class="arch-project__media">
+									<img loading="lazy" width="800" height="800" src="media/2026/07/Bath-1.jpg" class="attachment-large size-large wp-post-image" alt="" loading="lazy" decoding="async" />									<span class="arch-project__veil" aria-hidden="true"></span>
+								</span>
+								<span class="arch-project__body">
+																			<span class="arch-project__meta">Residential</span>
+																		<span class="arch-project__title">4 Marla Residence</span>
+									<span class="arch-project__cta">View project →</span>
+								</span>
+							</a>
+						</article>
+									</div>
 				<p class="arch-empty-note" data-arch-filter-empty hidden>No projects in this category yet.</p>
-			</div>
-		</section>
+									</div>
+	</section>
 
-		<section class="arch-section arch-section--mist" id="reviews">
-			<div class="arch-wrap">
-				<header class="arch-section__head">
-					<div>
-						<p class="arch-kicker">Client voices</p>
-						<h2 class="arch-h2">Reviews</h2>
-					</div>
-					<p class="arch-section__aside">Feedback from clients and collaborators who value precision and calm delivery.</p>
-				</header>
-				<div class="arch-reviews-marquee" data-arch-reviews>
-					<div class="arch-reviews-viewport">
-						<div class="arch-reviews-track">
-							<figure class="arch-review"><blockquote class="arch-review__quote"><p>“MSL Interior brought clarity to our home. From drawings to interiors, everything felt thoughtful and well coordinated.”</p></blockquote><figcaption class="arch-review__who"><strong>Sara Khan</strong><span>Private Client · Kasur</span></figcaption></figure>
-							<figure class="arch-review"><blockquote class="arch-review__quote"><p>“Their 3D elevations helped our family decide quickly. Site supervision kept quality consistent throughout.”</p></blockquote><figcaption class="arch-review__who"><strong>Omar Riaz</strong><span>Homeowner · Elite City</span></figcaption></figure>
-							<figure class="arch-review"><blockquote class="arch-review__quote"><p>“Modern, smart, luxury — they delivered exactly that. Furniture and finishes were carefully matched to the design.”</p></blockquote><figcaption class="arch-review__who"><strong>Nadia Ahmed</strong><span>Residential Client</span></figcaption></figure>
-							<figure class="arch-review"><blockquote class="arch-review__quote"><p>“Kitchen and washroom redesign was smooth from first visit to final handover.”</p></blockquote><figcaption class="arch-review__who"><strong>Amna Shah</strong><span>Renovation Client · Kasur</span></figcaption></figure>
-							<figure class="arch-review"><blockquote class="arch-review__quote"><p>“We needed accurate drawings and cost estimates. MSL Interior gave us both with practical options.”</p></blockquote><figcaption class="arch-review__who"><strong>Bilal Hassan</strong><span>Plot Owner · Lahore Road</span></figcaption></figure>
-							<figure class="arch-review"><blockquote class="arch-review__quote"><p>“Professional team for exterior elevations and lawn planning. Visuals made approval easy.”</p></blockquote><figcaption class="arch-review__who"><strong>Hassan Ali</strong><span>Villa Project · Elite City</span></figcaption></figure>
-							<figure class="arch-review"><blockquote class="arch-review__quote"><p>“Custom furniture and interior styling were done together, so every room felt complete.”</p></blockquote><figcaption class="arch-review__who"><strong>Fatima Noor</strong><span>Interior Client</span></figcaption></figure>
-							<figure class="arch-review" aria-hidden="true"><blockquote class="arch-review__quote"><p>“MSL Interior brought clarity to our home. From drawings to interiors, everything felt thoughtful and well coordinated.”</p></blockquote><figcaption class="arch-review__who"><strong>Sara Khan</strong><span>Private Client · Kasur</span></figcaption></figure>
-							<figure class="arch-review" aria-hidden="true"><blockquote class="arch-review__quote"><p>“Their 3D elevations helped our family decide quickly. Site supervision kept quality consistent throughout.”</p></blockquote><figcaption class="arch-review__who"><strong>Omar Riaz</strong><span>Homeowner · Elite City</span></figcaption></figure>
-							<figure class="arch-review" aria-hidden="true"><blockquote class="arch-review__quote"><p>“Modern, smart, luxury — they delivered exactly that. Furniture and finishes were carefully matched to the design.”</p></blockquote><figcaption class="arch-review__who"><strong>Nadia Ahmed</strong><span>Residential Client</span></figcaption></figure>
-							<figure class="arch-review" aria-hidden="true"><blockquote class="arch-review__quote"><p>“Kitchen and washroom redesign was smooth from first visit to final handover.”</p></blockquote><figcaption class="arch-review__who"><strong>Amna Shah</strong><span>Renovation Client · Kasur</span></figcaption></figure>
-							<figure class="arch-review" aria-hidden="true"><blockquote class="arch-review__quote"><p>“We needed accurate drawings and cost estimates. MSL Interior gave us both with practical options.”</p></blockquote><figcaption class="arch-review__who"><strong>Bilal Hassan</strong><span>Plot Owner · Lahore Road</span></figcaption></figure>
-							<figure class="arch-review" aria-hidden="true"><blockquote class="arch-review__quote"><p>“Professional team for exterior elevations and lawn planning. Visuals made approval easy.”</p></blockquote><figcaption class="arch-review__who"><strong>Hassan Ali</strong><span>Villa Project · Elite City</span></figcaption></figure>
-							<figure class="arch-review" aria-hidden="true"><blockquote class="arch-review__quote"><p>“Custom furniture and interior styling were done together, so every room felt complete.”</p></blockquote><figcaption class="arch-review__who"><strong>Fatima Noor</strong><span>Interior Client</span></figcaption></figure>
+	<!-- REVIEWS -->
+	<section class="arch-section arch-section--mist" id="reviews">
+		<div class="arch-wrap">
+			<header class="arch-section__head">
+				<div>
+					<p class="arch-kicker">Client voices</p>
+					<h2 class="arch-h2">Reviews</h2>
+				</div>
+				<p class="arch-section__aside">
+					Feedback from clients and collaborators who value precision and calm delivery.				</p>
+			</header>
+
+			<div class="arch-reviews-marquee" data-arch-reviews>
+				<div class="arch-reviews-viewport">
+					<div class="arch-reviews-track">
+													<figure class="arch-review">
+								<blockquote class="arch-review__quote">
+									<p>“MSL Interior brought clarity to our home. From drawings to interiors, everything felt thoughtful and well coordinated.”</p>
+								</blockquote>
+								<figcaption class="arch-review__who">
+									<strong>Sara Khan</strong>
+									<span>Private Client · Kasur</span>
+								</figcaption>
+							</figure>
+													<figure class="arch-review">
+								<blockquote class="arch-review__quote">
+									<p>“Their 3D elevations helped our family decide quickly. Site supervision kept quality consistent throughout.”</p>
+								</blockquote>
+								<figcaption class="arch-review__who">
+									<strong>Omar Riaz</strong>
+									<span>Homeowner · Elite City</span>
+								</figcaption>
+							</figure>
+													<figure class="arch-review">
+								<blockquote class="arch-review__quote">
+									<p>“Modern, smart, luxury — they delivered exactly that. Furniture and finishes were carefully matched to the design.”</p>
+								</blockquote>
+								<figcaption class="arch-review__who">
+									<strong>Nadia Ahmed</strong>
+									<span>Residential Client</span>
+								</figcaption>
+							</figure>
+													<figure class="arch-review">
+								<blockquote class="arch-review__quote">
+									<p>“Kitchen and washroom redesign was smooth from first visit to final handover. Communication stayed clear at every step.”</p>
+								</blockquote>
+								<figcaption class="arch-review__who">
+									<strong>Amna Shah</strong>
+									<span>Renovation Client · Kasur</span>
+								</figcaption>
+							</figure>
+													<figure class="arch-review">
+								<blockquote class="arch-review__quote">
+									<p>“We needed accurate drawings and cost estimates before construction. MSL Interior gave us both with practical options.”</p>
+								</blockquote>
+								<figcaption class="arch-review__who">
+									<strong>Bilal Hassan</strong>
+									<span>Plot Owner · Lahore Road</span>
+								</figcaption>
+							</figure>
+													<figure class="arch-review">
+								<blockquote class="arch-review__quote">
+									<p>“Professional team for exterior elevations and lawn planning. The visuals made it easy to approve the design early.”</p>
+								</blockquote>
+								<figcaption class="arch-review__who">
+									<strong>Hassan Ali</strong>
+									<span>Villa Project · Elite City</span>
+								</figcaption>
+							</figure>
+													<figure class="arch-review">
+								<blockquote class="arch-review__quote">
+									<p>“Custom furniture and interior styling were done together, so every room felt connected and complete.”</p>
+								</blockquote>
+								<figcaption class="arch-review__who">
+									<strong>Fatima Noor</strong>
+									<span>Interior Client</span>
+								</figcaption>
+							</figure>
+													<figure class="arch-review" aria-hidden="true">
+								<blockquote class="arch-review__quote">
+									<p>“MSL Interior brought clarity to our home. From drawings to interiors, everything felt thoughtful and well coordinated.”</p>
+								</blockquote>
+								<figcaption class="arch-review__who">
+									<strong>Sara Khan</strong>
+									<span>Private Client · Kasur</span>
+								</figcaption>
+							</figure>
+													<figure class="arch-review" aria-hidden="true">
+								<blockquote class="arch-review__quote">
+									<p>“Their 3D elevations helped our family decide quickly. Site supervision kept quality consistent throughout.”</p>
+								</blockquote>
+								<figcaption class="arch-review__who">
+									<strong>Omar Riaz</strong>
+									<span>Homeowner · Elite City</span>
+								</figcaption>
+							</figure>
+													<figure class="arch-review" aria-hidden="true">
+								<blockquote class="arch-review__quote">
+									<p>“Modern, smart, luxury — they delivered exactly that. Furniture and finishes were carefully matched to the design.”</p>
+								</blockquote>
+								<figcaption class="arch-review__who">
+									<strong>Nadia Ahmed</strong>
+									<span>Residential Client</span>
+								</figcaption>
+							</figure>
+													<figure class="arch-review" aria-hidden="true">
+								<blockquote class="arch-review__quote">
+									<p>“Kitchen and washroom redesign was smooth from first visit to final handover. Communication stayed clear at every step.”</p>
+								</blockquote>
+								<figcaption class="arch-review__who">
+									<strong>Amna Shah</strong>
+									<span>Renovation Client · Kasur</span>
+								</figcaption>
+							</figure>
+													<figure class="arch-review" aria-hidden="true">
+								<blockquote class="arch-review__quote">
+									<p>“We needed accurate drawings and cost estimates before construction. MSL Interior gave us both with practical options.”</p>
+								</blockquote>
+								<figcaption class="arch-review__who">
+									<strong>Bilal Hassan</strong>
+									<span>Plot Owner · Lahore Road</span>
+								</figcaption>
+							</figure>
+													<figure class="arch-review" aria-hidden="true">
+								<blockquote class="arch-review__quote">
+									<p>“Professional team for exterior elevations and lawn planning. The visuals made it easy to approve the design early.”</p>
+								</blockquote>
+								<figcaption class="arch-review__who">
+									<strong>Hassan Ali</strong>
+									<span>Villa Project · Elite City</span>
+								</figcaption>
+							</figure>
+													<figure class="arch-review" aria-hidden="true">
+								<blockquote class="arch-review__quote">
+									<p>“Custom furniture and interior styling were done together, so every room felt connected and complete.”</p>
+								</blockquote>
+								<figcaption class="arch-review__who">
+									<strong>Fatima Noor</strong>
+									<span>Interior Client</span>
+								</figcaption>
+							</figure>
+											</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- FAQ -->
+	<section class="arch-section arch-section--paper" id="faq">
+		<div class="arch-wrap">
+			<header class="arch-section__head">
+				<div>
+					<p class="arch-kicker">Common questions</p>
+					<h2 class="arch-h2">FAQ</h2>
+				</div>
+				<p class="arch-section__aside">
+					Quick answers about our services, process, and how we begin a project together.				</p>
+			</header>
+
+			<div class="arch-faq" data-arch-faq>
+									<div class="arch-faq__item is-open">
+						<button
+							type="button"
+							class="arch-faq__question"
+							aria-expanded="true"
+							aria-controls="arch-faq-panel-0"
+							id="arch-faq-btn-0"
+						>
+							<span>What services do you offer?</span>
+							<span class="arch-faq__icon" aria-hidden="true"></span>
+						</button>
+						<div
+							class="arch-faq__answer"
+							id="arch-faq-panel-0"
+							role="region"
+							aria-labelledby="arch-faq-btn-0"
+													>
+							<p>We provide 2D &amp; 3D drawings, 3D elevations &amp; animations, interior &amp; exterior designing, site visits &amp; supervision, construction &amp; renovation, cost &amp; material estimation, customized furniture, property dealing &amp; consultancy, plus web development and SEO.</p>
 						</div>
 					</div>
-				</div>
-			</div>
-		</section>
+									<div class="arch-faq__item">
+						<button
+							type="button"
+							class="arch-faq__question"
+							aria-expanded="false"
+							aria-controls="arch-faq-panel-1"
+							id="arch-faq-btn-1"
+						>
+							<span>Do you offer a free consultation?</span>
+							<span class="arch-faq__icon" aria-hidden="true"></span>
+						</button>
+						<div
+							class="arch-faq__answer"
+							id="arch-faq-panel-1"
+							role="region"
+							aria-labelledby="arch-faq-btn-1"
+							hidden						>
+							<p>Yes. Call or WhatsApp us for a free consultation. Share your location, project type, and goals — we will guide the next steps.</p>
+						</div>
+					</div>
+									<div class="arch-faq__item">
+						<button
+							type="button"
+							class="arch-faq__question"
+							aria-expanded="false"
+							aria-controls="arch-faq-panel-2"
+							id="arch-faq-btn-2"
+						>
+							<span>Where are you based?</span>
+							<span class="arch-faq__icon" aria-hidden="true"></span>
+						</button>
+						<div
+							class="arch-faq__answer"
+							id="arch-faq-panel-2"
+							role="region"
+							aria-labelledby="arch-faq-btn-2"
+							hidden						>
+							<p>Our studio is in Elite City, Kasur. We also support projects with site visits and supervision as needed.</p>
+						</div>
+					</div>
+									<div class="arch-faq__item">
+						<button
+							type="button"
+							class="arch-faq__question"
+							aria-expanded="false"
+							aria-controls="arch-faq-panel-3"
+							id="arch-faq-btn-3"
+						>
+							<span>Can you handle both drawings and on-site work?</span>
+							<span class="arch-faq__icon" aria-hidden="true"></span>
+						</button>
+						<div
+							class="arch-faq__answer"
+							id="arch-faq-panel-3"
+							role="region"
+							aria-labelledby="arch-faq-btn-3"
+							hidden						>
+							<p>Yes. From drawings and elevations to construction, renovation, and site supervision — we stay involved through delivery.</p>
+						</div>
+					</div>
+									<div class="arch-faq__item">
+						<button
+							type="button"
+							class="arch-faq__question"
+							aria-expanded="false"
+							aria-controls="arch-faq-panel-4"
+							id="arch-faq-btn-4"
+						>
+							<span>Do you design custom furniture as well?</span>
+							<span class="arch-faq__icon" aria-hidden="true"></span>
+						</button>
+						<div
+							class="arch-faq__answer"
+							id="arch-faq-panel-4"
+							role="region"
+							aria-labelledby="arch-faq-btn-4"
+							hidden						>
+							<p>Yes. We design customized furniture that fits your plan, style, and space so interiors feel complete and intentional.</p>
+						</div>
+					</div>
+									<div class="arch-faq__item">
+						<button
+							type="button"
+							class="arch-faq__question"
+							aria-expanded="false"
+							aria-controls="arch-faq-panel-5"
+							id="arch-faq-btn-5"
+						>
+							<span>How can I contact MSL Interior?</span>
+							<span class="arch-faq__icon" aria-hidden="true"></span>
+						</button>
+						<div
+							class="arch-faq__answer"
+							id="arch-faq-panel-5"
+							role="region"
+							aria-labelledby="arch-faq-btn-5"
+							hidden						>
+							<p>Call 0312-0411414 or 0301-4491812, message us on WhatsApp, or reach us on Facebook &amp; Instagram as MSL Interiors &amp; Architects.</p>
+						</div>
+					</div>
+							</div>
+		</div>
+	</section>
 
-		<section class="arch-section arch-section--paper" id="faq">
-			<div class="arch-wrap">
-				<header class="arch-section__head">
+	<!-- CONTACT -->
+	<section class="arch-section arch-section--mist" id="contact">
+		<div class="arch-wrap arch-contact">
+			<div class="arch-contact__info">
+				<p class="arch-kicker">Free consultation</p>
+				<h2 class="arch-h2">Let’s design your dream space</h2>
+				<p class="arch-lead">
+					Call, WhatsApp, or send a short inquiry. We help with drawings, interiors, construction, and property consultancy.				</p>
+
+				<dl class="arch-contact__list">
 					<div>
-						<p class="arch-kicker">Common questions</p>
-						<h2 class="arch-h2">FAQ</h2>
+						<dt>Phone</dt>
+						<dd>
+							<a href="tel:+923120411414">0312-0411414</a>
+							<span class="arch-contact__sep"> / </span>
+							<a href="tel:+923014491812">0301-4491812</a>
+						</dd>
 					</div>
-					<p class="arch-section__aside">Quick answers about our services, process, and how we begin a project together.</p>
-				</header>
-				<div class="arch-faq" data-arch-faq>
-					<div class="arch-faq__item is-open">
-						<button type="button" class="arch-faq__question" aria-expanded="true" aria-controls="faq-0" id="faq-btn-0"><span>What services do you offer?</span><span class="arch-faq__icon" aria-hidden="true"></span></button>
-						<div class="arch-faq__answer" id="faq-0" role="region"><p>We provide 2D & 3D drawings, 3D elevations & animations, interior & exterior designing, site visits & supervision, construction & renovation, cost & material estimation, customized furniture, property dealing & consultancy, plus web development and SEO.</p></div>
+					<div>
+						<dt>WhatsApp</dt>
+						<dd><a href="https://wa.me/923120411414" target="_blank" rel="noopener noreferrer">0312-0411414</a></dd>
 					</div>
-					<div class="arch-faq__item">
-						<button type="button" class="arch-faq__question" aria-expanded="false" aria-controls="faq-1" id="faq-btn-1"><span>Do you offer a free consultation?</span><span class="arch-faq__icon" aria-hidden="true"></span></button>
-						<div class="arch-faq__answer" id="faq-1" role="region" hidden><p>Yes. Call or WhatsApp us for a free consultation. Share your location, project type, and goals — we will guide the next steps.</p></div>
+					<div>
+						<dt>Facebook &amp; Instagram</dt>
+						<dd>
+							<a href="https://www.facebook.com/search/top/?q=MSL%20Interiors%20%26%20Architects" target="_blank" rel="noopener noreferrer">MSL Interiors &amp; Architects</a>
+						</dd>
 					</div>
-					<div class="arch-faq__item">
-						<button type="button" class="arch-faq__question" aria-expanded="false" aria-controls="faq-2" id="faq-btn-2"><span>Where are you based?</span><span class="arch-faq__icon" aria-hidden="true"></span></button>
-						<div class="arch-faq__answer" id="faq-2" role="region" hidden><p>Our studio is in Elite City, Kasur. We also support projects with site visits and supervision as needed.</p></div>
+					<div>
+						<dt>Studio</dt>
+						<dd>Elite City, Kasur</dd>
 					</div>
-					<div class="arch-faq__item">
-						<button type="button" class="arch-faq__question" aria-expanded="false" aria-controls="faq-3" id="faq-btn-3"><span>How can I contact MSL Interior?</span><span class="arch-faq__icon" aria-hidden="true"></span></button>
-						<div class="arch-faq__answer" id="faq-3" role="region" hidden><p>Call 0312-0411414 or 0301-4491812, message us on WhatsApp, or reach us as MSL Interiors & Architects on social media.</p></div>
-					</div>
-				</div>
+				</dl>
 			</div>
-		</section>
 
-		<section class="arch-section arch-section--mist" id="contact">
-			<div class="arch-wrap arch-contact">
-				<div class="arch-contact__info">
-					<p class="arch-kicker">Free consultation</p>
-					<h2 class="arch-h2">Let’s design your dream space</h2>
-					<p class="arch-lead">Call, WhatsApp, or send a short inquiry. We help with drawings, interiors, construction, and property consultancy.</p>
-					<dl class="arch-contact__list">
-						<div><dt>Phone</dt><dd><a href="tel:+923120411414">0312-0411414</a> / <a href="tel:+923014491812">0301-4491812</a></dd></div>
-						<div><dt>WhatsApp</dt><dd><a href="https://wa.me/923120411414" target="_blank" rel="noopener">0312-0411414</a></dd></div>
-						<div><dt>Studio</dt><dd>Elite City, Kasur</dd></div>
-						<div><dt>Social</dt><dd>MSL Interiors & Architects</dd></div>
-					</dl>
-				</div>
-				<form class="arch-contact__form-card" id="preview-consult" action="https://wa.me/923120411414" method="get" target="_blank" rel="noopener">
-					<p style="margin:0 0 .75rem;font-size:.9rem;color:#5c616a;">Tell us about your project — opens WhatsApp with your message.</p>
-					<label for="pname">Full name *</label>
-					<input id="pname" name="name" required placeholder="Your name" />
-					<label for="pphone">Phone *</label>
-					<input id="pphone" name="phone" required placeholder="03XX-XXXXXXX" />
-					<label for="ptype">Project type</label>
-					<select id="ptype">
+			<form class="arch-form" id="arch-consult-form" action="https://wa.me/923120411414" method="get" data-arch-whatsapp="https://wa.me/923120411414">
+				<p class="arch-form__note">Tell us about your project — we will follow up on WhatsApp / call for a free consultation.</p>
+				<label class="arch-field">
+					<span>Full name *</span>
+					<input type="text" name="name" required placeholder="Your name">
+				</label>
+				<label class="arch-field">
+					<span>Phone *</span>
+					<input type="tel" name="phone" required placeholder="03XX-XXXXXXX">
+				</label>
+				<label class="arch-field">
+					<span>Email</span>
+					<input type="email" name="email" placeholder="you@email.com">
+				</label>
+				<label class="arch-field">
+					<span>Project type</span>
+					<select name="type">
 						<option value="">Select…</option>
-						<option>2D / 3D Drawings</option>
-						<option>Interior & Exterior Design</option>
-						<option>Construction & Renovation</option>
-						<option>Web Development / SEO</option>
-						<option>Other</option>
+						<option value="2D / 3D Drawings">2D / 3D Drawings</option>
+						<option value="3D Elevations & Animations">3D Elevations &amp; Animations</option>
+						<option value="Interior & Exterior Design">Interior &amp; Exterior Design</option>
+						<option value="Construction & Renovation">Construction &amp; Renovation</option>
+						<option value="Customized Furniture">Customized Furniture</option>
+						<option value="Property Consultancy">Property Consultancy</option>
+						<option value="Other">Other</option>
 					</select>
-					<label for="pmsg">Message *</label>
-					<textarea id="pmsg" required placeholder="Location, project type, and what you need…"></textarea>
-					<p style="margin:1rem 0 0"><button type="submit" class="arch-btn arch-btn--solid">Request free consultation</button></p>
-				</form>
-			</div>
-		</section>
+				</label>
+				<label class="arch-field">
+					<span>Message *</span>
+					<textarea name="message" rows="5" required placeholder="Location, project type, and what you need…"></textarea>
+				</label>
+				<button type="submit" class="arch-btn arch-btn--solid arch-btn--block">Request free consultation</button>
+				<p class="arch-form__fine">
+					Or call us directly at 0312-0411414				</p>
+			</form>
+		</div>
+	</section>
 
-		<footer class="arch-footer">
-			<div class="arch-wrap arch-footer__inner">
-				<div>
-					<strong class="arch-footer__brand">MSL Interior</strong>
-					<p>Interiors & Architects · Modern · Smart · Luxury</p>
-					<p>0312-0411414 · Elite City, Kasur</p>
-				</div>
-				<nav class="arch-footer__nav" aria-label="Footer">
-					<a href="#about">About</a>
-					<a href="#services">Services</a>
-					<a href="#projects">Projects</a>
-					<a href="#reviews">Reviews</a>
-					<a href="#faq">FAQ</a>
-					<a href="#contact">Contact</a>
-				</nav>
-				<p class="arch-footer__copy">&copy; 2026 MSL Interior</p>
+	<!-- SITE FOOTER (replaces mismatched theme footer content visually) -->
+	<footer class="arch-footer">
+		<div class="arch-wrap arch-footer__inner">
+			<div>
+				<strong class="arch-footer__brand">MSL Interior</strong>
+				<p>Interiors &amp; Architects · Modern · Smart · Luxury</p>
+				<p class="arch-footer__contact">
+					<a href="tel:+923120411414">0312-0411414</a>
+					<span class="arch-contact__sep"> · </span>
+					Elite City, Kasur				</p>
 			</div>
-		</footer>
+			<nav class="arch-footer__nav" aria-label="Footer">
+				<a href="#about">About</a>
+				<a href="#services">Services</a>
+				<a href="#projects">Projects</a>
+				<a href="#reviews">Reviews</a>
+				<a href="#faq">FAQ</a>
+				<a href="#contact">Contact</a>
+			</nav>
+			<p class="arch-footer__copy">&copy; 2026 MSL Interior</p>
+		</div>
+	</footer>
+</main>
+
 	</main>
 
-	<script src="assets/portfolio.js" defer></script>
-	<script>
-		(function () {
-			var form = document.getElementById('preview-consult');
-			if (!form) return;
-			form.addEventListener('submit', function (e) {
-				e.preventDefault();
-				var name = document.getElementById('pname').value.trim();
-				var phone = document.getElementById('pphone').value.trim();
-				var type = document.getElementById('ptype').value.trim();
-				var msg = document.getElementById('pmsg').value.trim();
-				var lines = ['MSL Interior inquiry', 'Name: ' + name, 'Phone: ' + phone];
-				if (type) lines.push('Project: ' + type);
-				lines.push('Message: ' + msg);
-				window.open('https://wa.me/923120411414?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
-			});
-		})();
-	</script>
+	<footer id="footer" class="ct-footer" data-id="type-1" itemscope="" itemtype="https://schema.org/WPFooter"><div data-row="middle"><div class="ct-container"><div data-column="widget-area-1"><div class="ct-widget is-layout-flow widget_block" id="block-9">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<figure class="wp-block-image size-full is-resized"><img decoding="async" src="media/2022/05/logo-dark.svg" alt="" class="wp-image-635" width="150" height="30"/></figure>
+
+
+
+<p class="wp-block-paragraph">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua bendum estiIaculis volutpat lacus laoreet vitae ultricies leo integer.</p>
+</div>
+</div><div class="ct-widget is-layout-flow widget_block" id="block-10"><div class="ct-block-wrapper"><h3 class="wp-block-heading" style="font-size:clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.313), 18px);"></h3><div class="ct-socials-block" style="--background-color:rgba(218, 222, 228, 0.5);--background-hover-color:rgba(218, 222, 228, 0.7);--theme-icon-size:15px;">
+		<div class="ct-social-box" data-color="default" data-icons-type="rounded:solid" style="" >
+			
+			
+							
+				<a href="#" data-network="facebook" aria-label="Facebook">
+					<span class="ct-icon-container">
+					<svg
+					width="20px"
+					height="20px"
+					viewBox="0 0 20 20"
+					aria-hidden="true">
+						<path d="M20,10.1c0-5.5-4.5-10-10-10S0,4.5,0,10.1c0,5,3.7,9.1,8.4,9.9v-7H5.9v-2.9h2.5V7.9C8.4,5.4,9.9,4,12.2,4c1.1,0,2.2,0.2,2.2,0.2v2.5h-1.3c-1.2,0-1.6,0.8-1.6,1.6v1.9h2.8L13.9,13h-2.3v7C16.3,19.2,20,15.1,20,10.1z"/>
+					</svg>
+				</span>				</a>
+							
+				<a href="#" data-network="twitter" aria-label="X (Twitter)">
+					<span class="ct-icon-container">
+					<svg
+					width="20px"
+					height="20px"
+					viewBox="0 0 20 20"
+					aria-hidden="true">
+						<path d="M2.9 0C1.3 0 0 1.3 0 2.9v14.3C0 18.7 1.3 20 2.9 20h14.3c1.6 0 2.9-1.3 2.9-2.9V2.9C20 1.3 18.7 0 17.1 0H2.9zm13.2 3.8L11.5 9l5.5 7.2h-4.3l-3.3-4.4-3.8 4.4H3.4l5-5.7-5.3-6.7h4.4l3 4 3.5-4h2.1zM14.4 15 6.8 5H5.6l7.7 10h1.1z"/>
+					</svg>
+				</span>				</a>
+							
+				<a href="#" data-network="linkedin" aria-label="LinkedIn">
+					<span class="ct-icon-container">
+					<svg
+					width="20px"
+					height="20px"
+					viewBox="0 0 20 20"
+					aria-hidden="true">
+						<path d="M18.6,0H1.4C0.6,0,0,0.6,0,1.4v17.1C0,19.4,0.6,20,1.4,20h17.1c0.8,0,1.4-0.6,1.4-1.4V1.4C20,0.6,19.4,0,18.6,0z M6,17.1h-3V7.6h3L6,17.1L6,17.1zM4.6,6.3c-1,0-1.7-0.8-1.7-1.7s0.8-1.7,1.7-1.7c0.9,0,1.7,0.8,1.7,1.7C6.3,5.5,5.5,6.3,4.6,6.3z M17.2,17.1h-3v-4.6c0-1.1,0-2.5-1.5-2.5c-1.5,0-1.8,1.2-1.8,2.5v4.7h-3V7.6h2.8v1.3h0c0.4-0.8,1.4-1.5,2.8-1.5c3,0,3.6,2,3.6,4.5V17.1z"/>
+					</svg>
+				</span>				</a>
+							
+				<a href="#" data-network="medium" aria-label="Medium">
+					<span class="ct-icon-container">
+					<svg
+					width="20"
+					height="20"
+					viewBox="0 0 20 20"
+					aria-hidden="true">
+						<path d="M2.4,5.3c0-0.2-0.1-0.5-0.3-0.7L0.3,2.4V2.1H6l4.5,9.8l3.9-9.8H20v0.3l-1.6,1.5c-0.1,0.1-0.2,0.3-0.2,0.4v11.2c0,0.2,0,0.3,0.2,0.4l1.6,1.5v0.3h-7.8v-0.3l1.6-1.6c0.2-0.2,0.2-0.2,0.2-0.4V6.5L9.4,17.9H8.8L3.6,6.5v7.6c0,0.3,0.1,0.6,0.3,0.9L6,17.6v0.3H0v-0.3L2.1,15c0.2-0.2,0.3-0.6,0.3-0.9V5.3z"/>
+					</svg>
+				</span>				</a>
+			
+			
+					</div>
+
+	</div></div></div></div><div data-column="widget-area-2"><div class="ct-widget is-layout-flow widget_block" id="block-11">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<h5 class="wp-block-heading">Industries</h5>
+
+
+
+<ul class="wp-block-list"><li><a href="#">Retail</a></li><li><a href="#">Insurance</a></li><li><a href="#">Construction</a></li><li><a href="#">Public Sector</a></li><li><a href="#">Financial Services</a></li></ul>
+</div>
+</div></div><div data-column="widget-area-3"><div class="ct-widget is-layout-flow widget_block" id="block-12">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<h5 class="wp-block-heading">Services</h5>
+
+
+
+<ul class="wp-block-list"><li><a href="#">Automation</a></li><li><a href="#">Implementation</a></li><li><a href="#">Business Strategy</a></li><li><a href="#">Advanced Analytics</a></li><li><a href="#">Marketing Optimization</a></li></ul>
+</div>
+</div></div><div data-column="widget-area-4"><div class="ct-widget is-layout-flow widget_block" id="block-13">
+<div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
+<h5 class="wp-block-heading">Contact Us</h5>
+
+
+
+<p class="wp-block-paragraph">Need help or have a question?<br><br>Phone: +123 456-789<br>Fax: (+63) 555 0100<br>Email: info@email.com</p>
+</div>
+</div></div></div></div><div data-row="bottom"><div class="ct-container"><div data-column="copyright">
+<div
+	class="ct-footer-copyright"
+	data-id="copyright">
+
+	Copyright &copy; 2026 - WordPress Theme by <a href="https://creativethemes.com">CreativeThemes</a></div>
+</div></div></div></footer></div>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/wordpress/*"},{"not":{"href_matches":["/wordpress/wp-*.php","/wordpress/wp-admin/*","/wordpress/wp-content/uploads/*","/wordpress/wp-content/*","/wordpress/wp-content/plugins/*","/wordpress/wp-content/themes/blocksy/*","/wordpress/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+			<script>
+				const lazyloadRunObserver = () => {
+					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
+					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
+						entries.forEach( ( entry ) => {
+							if ( entry.isIntersecting ) {
+								let lazyloadBackground = entry.target;
+								if( lazyloadBackground ) {
+									lazyloadBackground.classList.add( 'e-lazyloaded' );
+								}
+								lazyloadBackgroundObserver.unobserve( entry.target );
+							}
+						});
+					}, { rootMargin: '200px 0px 200px 0px' } );
+					lazyloadBackgrounds.forEach( ( lazyloadBackground ) => {
+						lazyloadBackgroundObserver.observe( lazyloadBackground );
+					} );
+				};
+				const events = [
+					'DOMContentLoaded',
+					'elementor/lazyload/observe',
+				];
+				events.forEach( ( event ) => {
+					document.addEventListener( event, lazyloadRunObserver );
+				} );
+			</script>
+			<script id="ct-scripts-js-extra">
+var ct_localizations = {"ajax_url":"./wp-admin/admin-ajax.php","public_url":"wp-content/themes/blocksy/static/bundle/","rest_url":"./wp-json/","search_url":"./search/QUERY_STRING/","show_more_text":"Show more","more_text":"More","search_live_results":"Search results","search_live_no_results":"No results","search_live_results_closed":"Search results closed.","search_live_no_result":"No results","search_live_one_result":"You got %s result. Please press Tab to select it.","search_live_many_results":"You got %s results. Please press Tab to select one.","search_live_stock_status_texts":{"instock":"In stock","outofstock":"Out of stock"},"clipboard_copied":"Copied!","clipboard_failed":"Failed to Copy","expand_submenu":"Expand dropdown menu","collapse_submenu":"Collapse dropdown menu","dynamic_js_chunks":[{"id":"blocksy_sticky_header","selector":"header [data-sticky]","url":"wp-content/plugins/blocksy-companion/static/bundle/sticky.js?ver=2.1.48","version":"2.1.48"}],"dynamic_styles":{"lazy_load":"wp-content/themes/blocksy/static/bundle/non-critical-styles.min.css?ver=2.1.48","search_lazy":"wp-content/themes/blocksy/static/bundle/non-critical-search-styles.min.css?ver=2.1.48","back_to_top":"wp-content/themes/blocksy/static/bundle/back-to-top.min.css?ver=2.1.48"},"dynamic_styles_selectors":[{"selector":".ct-header-cart, #woo-cart-panel","url":"wp-content/themes/blocksy/static/bundle/cart-header-element-lazy.min.css?ver=2.1.48"},{"selector":".flexy","url":"wp-content/themes/blocksy/static/bundle/flexy.min.css?ver=2.1.48"},{"selector":".ct-pagination","url":"wp-content/themes/blocksy/static/bundle/pagination.min.css?ver=2.1.48"},{"selector":"#account-modal","url":"wp-content/plugins/blocksy-companion/static/bundle/header-account-modal-lazy.min.css?ver=2.1.48"},{"selector":".ct-header-account","url":"wp-content/plugins/blocksy-companion/static/bundle/header-account-dropdown-lazy.min.css?ver=2.1.48"}],"login_generic_error_msg":"An unexpected error occurred. Please try again later."};
+//# sourceURL=ct-scripts-js-extra
+</script>
+<script id="blocksy-arch-portfolio-js" src="wp-content/themes/blocksy/inc/architecture-portfolio/portfolio.js"></script>
 </body>
 </html>
+
+
+

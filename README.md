@@ -1,17 +1,31 @@
 # MSL Interior (Blocksy theme)
 
-WordPress theme customization for **MSL Interiors & Architects**.
+WordPress theme for **MSL Interiors & Architects**.
 
-## Live preview
+## Three ways to use
 
-**https://mryamaslam.github.io/MSL_arcitect/**
+| Mode | URL / path | What it does |
+|------|------------|--------------|
+| **Edit (WordPress)** | `http://localhost/wordpress/` + WP Admin | Change content, projects, images, phone numbers |
+| **Theme code (GitHub)** | [github.com/Mryamaslam/MSL_arcitect](https://github.com/Mryamaslam/MSL_arcitect) | Version theme files; push updates |
+| **Live preview (GitHub Pages)** | [mryamaslam.github.io/MSL_arcitect](https://mryamaslam.github.io/MSL_arcitect/) | Static **as-is** snapshot of your WordPress homepage (real projects + images) |
 
-Complete static preview (hero, services, process, projects filters, reviews marquee, FAQ, WhatsApp contact). Images are local and compressed for faster load.
+## Refresh GitHub preview after WordPress edits
 
-Full WordPress features (real project CPT / media library) still run on XAMPP: `http://localhost/wordpress/`
+With XAMPP running:
 
-## Local WordPress
+```powershell
+cd wp-content\themes\blocksy
+powershell -ExecutionPolicy Bypass -File tools\snapshot-preview.ps1
+git add docs
+git commit -m "Refresh live preview snapshot"
+git push origin main
+```
 
-1. Theme folder → `wp-content/themes/blocksy`
-2. Activate Blocksy
-3. Open front page
+Pages rebuilds in about 1–2 minutes.
+
+## Notes
+
+- GitHub Pages cannot run PHP/WordPress — the preview is a static export in `docs/`.
+- Full CMS features (project CPT, media library, forms) stay on WordPress (local or hosting).
+- Same theme code works in both places: edit in WP, snapshot to GitHub when you want the public preview updated.
