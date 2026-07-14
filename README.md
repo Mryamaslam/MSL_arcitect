@@ -2,16 +2,16 @@
 
 WordPress theme customization for **MSL Interiors & Architects**.
 
-## Live preview (GitHub Pages)
-
-After Pages is enabled for this repo (source: `main` → `/docs`):
+## Live preview
 
 **https://mryamaslam.github.io/MSL_arcitect/**
 
-> Note: This is a **static demo**. Full features (project CPT, WhatsApp form, real gallery) need WordPress (e.g. XAMPP: `http://localhost/wordpress/`).
+Complete static preview (hero, services, process, projects filters, reviews marquee, FAQ, WhatsApp contact). Images are local and compressed for faster load.
+
+Full WordPress features (real project CPT / media library) still run on XAMPP: `http://localhost/wordpress/`
 
 ## Local WordPress
 
-1. Copy this theme folder into `wp-content/themes/blocksy`
-2. Activate Blocksy in WP Admin
-3. Open the front page
+1. Theme folder → `wp-content/themes/blocksy`
+2. Activate Blocksy
+3. Open front page
